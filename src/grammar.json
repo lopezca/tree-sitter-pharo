@@ -330,8 +330,17 @@
                 "type": "FIELD",
                 "name": "name",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "symbol"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "string"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "symbol"
+                    }
+                  ]
                 }
               }
             ]
@@ -364,8 +373,17 @@
                 "type": "FIELD",
                 "name": "superclass",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "symbol"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "string"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "symbol"
+                    }
+                  ]
                 }
               }
             ]
@@ -398,8 +416,17 @@
                 "type": "FIELD",
                 "name": "traits",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "string"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "string"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "symbol"
+                    }
+                  ]
                 }
               }
             ]
@@ -432,8 +459,17 @@
                 "type": "FIELD",
                 "name": "classTraits",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "string"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "string"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "symbol"
+                    }
+                  ]
                 }
               }
             ]
@@ -688,8 +724,17 @@
                 "type": "FIELD",
                 "name": "type",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "symbol"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "string"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "symbol"
+                    }
+                  ]
                 }
               }
             ]
@@ -838,8 +883,17 @@
                 "type": "FIELD",
                 "name": "category",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "symbol"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "string"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "symbol"
+                    }
+                  ]
                 }
               }
             ]

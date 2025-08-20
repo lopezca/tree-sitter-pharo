@@ -50,17 +50,17 @@ module.exports = grammar({
 
     class_header_pair: ($) =>
       choice(
-        prec(1, seq(field("key", alias("#name", $.ston_key)),          ":", field("name", $.symbol))),
-        prec(1, seq(field("key", alias("#superclass", $.ston_key)),    ":", field("superclass", $.symbol))),
-        prec(1, seq(field("key", alias("#traits", $.ston_key)),        ":", field("traits", $.string))),
-        prec(1, seq(field("key", alias("#classTraits", $.ston_key)),   ":", field("classTraits", $.string))),
+        prec(1, seq(field("key", alias("#name", $.ston_key)),          ":", field("name", choice($.string, $.symbol)))),
+        prec(1, seq(field("key", alias("#superclass", $.ston_key)),    ":", field("superclass", choice($.string, $.symbol)))),
+        prec(1, seq(field("key", alias("#traits", $.ston_key)),        ":", field("traits", choice($.string, $.symbol)))),
+        prec(1, seq(field("key", alias("#classTraits", $.ston_key)),   ":", field("classTraits", choice($.string, $.symbol)))),
         prec(1, seq(field("key", alias("#category", $.ston_key)),      ":", field("category", choice($.string, $.symbol)))),
         prec(1, seq(field("key", alias("#package", $.ston_key)),       ":", field("package", choice($.string, $.symbol)))),
         prec(1, seq(field("key", alias("#instVars", $.ston_key)),      ":", field("instVars", $.ston_array))),
         prec(1, seq(field("key", alias("#classVars", $.ston_key)),     ":", field("classVars", $.ston_array))),
         prec(1, seq(field("key", alias("#pools", $.ston_key)),         ":", field("pools", $.ston_array))),
         prec(1, seq(field("key", alias("#classInstVars", $.ston_key)), ":", field("classInstVars", $.ston_array))),
-        prec(1, seq(field("key", alias("#type", $.ston_key)),          ":", field("type", $.symbol))),
+        prec(1, seq(field("key", alias("#type", $.ston_key)),          ":", field("type", choice($.string, $.symbol)))),
         prec(0, $.ston_pair)
       ),
 
@@ -72,7 +72,7 @@ module.exports = grammar({
 
     method_metadata_pair: ($) =>
       choice(
-        prec(1, seq(field("key", alias("#category", $.ston_key)), ":", field("category", $.symbol, $.string))),
+        prec(1, seq(field("key", alias("#category", $.ston_key)), ":", field("category", choice($.string, $.symbol)))),
         prec(0, $.ston_pair)
       ),
     
