@@ -110,7 +110,7 @@ module.exports = grammar({
     cascaded_keyword_message: ($) => prec(-4, repeat1($.keyword_part)),
 
     // TODO: base should determine valid digits (need custom scanner)
-    number: ($) => /-?[0-9]+\.[0-9]+|-?([0-9]+r)?[0-9]+/,
+    number: ($) => /(?:[-+]?[0-9]+\.[0-9]+|[-+]?(?:[0-9]+r)?[0-9]+)(?:[eE][-+]?[0-9]+)?/,
     string: ($) => token(seq("'", /([^']|'')*/, "'")),
     symbol: ($) => token(
       seq(
