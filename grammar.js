@@ -84,14 +84,14 @@ module.exports = grammar({
         choice(
           seq(
             repeat1(choice($.pragma, $.temporaries)),
-            optional("."),
-            optional(seq(sep1($.statement, optional(".")), optional(".")))
+            repeat("."),
+            optional(seq(sep1($.statement, repeat(".")), repeat(".")))
           ),
           seq(
             repeat(choice($.pragma, $.temporaries)),
-            optional("."),
-            sep1($.statement, optional(".")),
-            optional(".")
+            repeat("."),
+            sep1($.statement, repeat(".")),
+            repeat(".")
           )
         )
       ),

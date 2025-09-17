@@ -3604,3 +3604,148 @@ GraphTest >> testNeighborsOf [
                     (keyword)
                     (number)))
                 (unary_identifier)))))))))
+
+================================================================================
+Real example #9 - DirectedGraphTest
+================================================================================
+"
+I'm a test case for DirectedGraph
+"
+Class {
+	#name : #DirectedGraphTest,
+	#superclass : #GraphTest,
+	#category : #'Mole-Tests-Graph'
+}
+
+{ #category : #'tests - topological sort' }
+DirectedGraphTest >> testTopologicalSort [
+
+	| graph topologicalOrder validTopologicalOrders |
+
+	graph := self graphBuilder
+		addVertex: 1;
+		connect: 2 to: 3;
+		connect: 3 to: 4;
+		connect: 3 to: 6;
+		buildDirected..
+
+	topologicalOrder := graph topologicalSort.
+	self assert: topologicalOrder size equals: 5.
+
+	validTopologicalOrders := {#(1 2 3 4 6). #(1 2 3 6 4). 	#(2 3 4 6 1). #(2 3 6 4 1)}.
+
+	self assert: (validTopologicalOrders includes: topologicalOrder)
+]
+
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (comment)
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol
+            (string)))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol
+              (string)))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (temporaries
+          (identifier)
+          (identifier)
+          (identifier))
+        (statement
+          (assignment
+            (identifier)
+            (cascade
+              (keyword_message
+                (unary_message
+                  (self)
+                  (unary_identifier))
+                (keyword)
+                (number))
+              (cascaded_keyword_message
+                (keyword)
+                (number)
+                (keyword)
+                (number))
+              (cascaded_keyword_message
+                (keyword)
+                (number)
+                (keyword)
+                (number))
+              (cascaded_keyword_message
+                (keyword)
+                (number)
+                (keyword)
+                (number))
+              (cascaded_unary_message
+                (unary_identifier)))))
+        (statement
+          (assignment
+            (identifier)
+            (unary_message
+              (identifier)
+              (unary_identifier))))
+        (statement
+          (keyword_message
+            (self)
+            (keyword)
+            (unary_message
+              (identifier)
+              (unary_identifier))
+            (keyword)
+            (number)))
+        (statement
+          (assignment
+            (identifier)
+            (dynamic_array
+              (literal_array
+                (number)
+                (number)
+                (number)
+                (number)
+                (number))
+              (literal_array
+                (number)
+                (number)
+                (number)
+                (number)
+                (number))
+              (literal_array
+                (number)
+                (number)
+                (number)
+                (number)
+                (number))
+              (literal_array
+                (number)
+                (number)
+                (number)
+                (number)
+                (number)))))
+        (statement
+          (keyword_message
+            (self)
+            (keyword)
+            (parenthesized_expression
+              (keyword_message
+                (identifier)
+                (keyword)
+                (identifier)))))))))
