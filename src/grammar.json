@@ -1730,7 +1730,70 @@
           "type": "ALIAS",
           "content": {
             "type": "STRING",
-            "value": ":="
+            "value": "("
+          },
+          "named": true,
+          "value": "symbol"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": ")"
+          },
+          "named": true,
+          "value": "symbol"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "["
+          },
+          "named": true,
+          "value": "symbol"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "]"
+          },
+          "named": true,
+          "value": "symbol"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "{"
+          },
+          "named": true,
+          "value": "symbol"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "}"
+          },
+          "named": true,
+          "value": "symbol"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": ":"
+          },
+          "named": true,
+          "value": "symbol"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": ";"
           },
           "named": true,
           "value": "symbol"
@@ -2132,6 +2195,14 @@
     [
       "temporaries",
       "temporaries"
+    ],
+    [
+      "literal_array",
+      "_literal_array_element"
+    ],
+    [
+      "_literal_array_element",
+      "nested_array_literal"
     ]
   ],
   "precedences": [],
