@@ -138,13 +138,11 @@ module.exports = grammar({
     // TODO: base should determine valid digits (need custom scanner)
     number: ($) => /(?:[-+]?[0-9]+\.[0-9]+|[-+]?(?:[0-9]+r)?[0-9]+)(?:[eE][-+]?[0-9]+)?/,
     string: ($) => token(seq("'", /([^']|'')*/, "'")),
-    symbol: ($) => token(
-      seq(
-        "#",
-        choice(
-          new RegExp(symbol_chars),
-          seq("'", /[^']*/, "'")
-        )
+    symbol: ($) => seq(
+      "#",
+      choice(
+        new RegExp(symbol_chars),
+        $.string,
       )
     ),
     character: ($) => /\$(\s|.)/,

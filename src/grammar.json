@@ -1596,42 +1596,26 @@
       }
     },
     "symbol": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "#"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "[A-Za-z0-9_:]+|[-+\\\\/*~<>=@,%|&?!]+"
-              },
-              {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "'"
-                  },
-                  {
-                    "type": "PATTERN",
-                    "value": "[^']*"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "'"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[A-Za-z0-9_:]+|[-+\\\\/*~<>=@,%|&?!]+"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "string"
+            }
+          ]
+        }
+      ]
     },
     "character": {
       "type": "PATTERN",

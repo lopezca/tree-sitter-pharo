@@ -1091,6 +1091,21 @@
     }
   },
   {
+    "type": "symbol",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "temporaries",
     "named": true,
     "fields": {},
@@ -1145,6 +1160,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "#",
+    "named": false
   },
   {
     "type": "#(",
@@ -1265,10 +1284,6 @@
   },
   {
     "type": "super",
-    "named": true
-  },
-  {
-    "type": "symbol",
     "named": true
   },
   {

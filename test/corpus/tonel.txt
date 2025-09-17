@@ -81,7 +81,8 @@ MyClass >> foo [
         (method_metadata_object
           (method_metadata_pair
             (ston_key)
-            (symbol))))
+            (symbol
+              (string)))))
       (method_header
         (identifier)
         (unary_selector
@@ -285,7 +286,8 @@ Package { #name : #'GeoSphere-Model' }
     (package_definition
       (package_data
         (ston_key)
-        (symbol)))))
+        (symbol
+          (string))))))
 
 ================================================================================
 Real example #1 - ZTimestampPreciseSNTPClient
@@ -2445,7 +2447,8 @@ GSCoordinates class >> dms: aNumber labels: labelArray to: aStream [
                   (string))))
             (class_header_pair
               (ston_key)
-              (symbol))))
+              (symbol
+                (string)))))
         (method_definition
           (method_metadata
             (method_metadata_object
@@ -2618,7 +2621,8 @@ SoilBTreeTest >> testRecyclePage [
               (string))))
         (class_header_pair
           (ston_key)
-          (symbol))))
+          (symbol
+            (string)))))
     (method_definition
       (method_metadata
         (method_metadata_object
@@ -2967,13 +2971,15 @@ MacOSFileLock class >> fieldsDesc [
               (string))))
         (class_header_pair
           (ston_key)
-          (symbol))))
+          (symbol
+            (string)))))
     (method_definition
       (method_metadata
         (method_metadata_object
           (method_metadata_pair
             (ston_key)
-            (symbol))))
+            (symbol
+              (string)))))
       (method_header
         (identifier)
         (class_keyword)
@@ -3053,7 +3059,8 @@ QACIconSelectionDialog >> iconReceiver: anIconReceiver [
               (string))))
         (class_header_pair
           (ston_key)
-          (symbol))))
+          (symbol
+            (string)))))
     (method_definition
       (method_metadata
         (method_metadata_object
@@ -3141,7 +3148,8 @@ PHCTUniquelyIdentified >> id: anObject [
               (string))))
         (class_header_pair
           (ston_key)
-          (symbol))))
+          (symbol
+            (string)))))
     (method_definition
       (method_metadata
         (method_metadata_object
@@ -3205,7 +3213,8 @@ PHCTUniquelyIdentified >> id: anObject [
         (method_metadata_object
           (method_metadata_pair
             (ston_key)
-            (symbol))))
+            (symbol
+              (string)))))
       (method_header
         (identifier)
         (unary_selector

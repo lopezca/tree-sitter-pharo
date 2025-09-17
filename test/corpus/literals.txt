@@ -248,7 +248,24 @@ test
     (unary_selector
       (unary_identifier))
     (statement
-      (symbol))))
+      (symbol
+        (string)))))
+
+================================================================================
+Multiple quoted Symbol
+================================================================================
+test
+
+    #'abc '' abc '' def'
+--------------------------------------------------------------------------------
+
+(source
+  (method
+    (unary_selector
+      (unary_identifier))
+    (statement
+      (symbol
+        (string)))))
 
 ================================================================================
 Empty Symbol
@@ -263,7 +280,8 @@ test
     (unary_selector
       (unary_identifier))
     (statement
-      (symbol))))
+      (symbol
+        (string)))))
 
 ================================================================================
 Character
