@@ -2416,3 +2416,318 @@ GSCoordinates class >> dms: aNumber labels: labelArray to: aStream [
                               (unary_message
                                 (identifier)
                                 (unary_identifier)))))))))))))))
+
+================================================================================
+Real example #4 - SoilBTreeTest
+================================================================================
+Class {
+	#name : #SoilBTreeTest,
+	#superclass : #TestCase,
+	#instVars : [
+		'index'
+	],
+	#category : #'Soil-Core-Tests-Index'
+}
+
+{ #category : #tests }
+SoilBTreeTest >> testRecyclePage [
+	
+	| capacityFirst offset capacity iterator counter |
+	capacityFirst := index firstPage itemCapacity.
+	1 to: capacityFirst do: [ :n | 
+		index at: n put: (n asByteArrayOfSize: 8) ].
+	self assert: index pages size equals: 3.
+	offset := capacityFirst.
+	iterator := index newIterator.
+	2 to: 6 do: [ :p | 
+		index at: offset + 1 put: ((offset + 1) asByteArrayOfSize: 8).
+		capacity := index lastPage itemCapacity.
+		offset + 2 to:  (offset + capacity) do: [:n | .
+			index at: n put: (n asByteArrayOfSize: 8) ].
+		offset := offset + capacity ].
+	self assert: index pages size equals: 13.
+	index recyclePage: (index pages at: 3).
+	self assert: index pages size equals: 13.
+	"page 3 is the recycled page"
+	self assert: index firstFreePage offset equals: 3.
+	"the page is a free page"
+	self assert: index firstFreePage class equals: SoilFreePage.
+	"after, index 3 should not be a value in any index page item"
+	index indexPages do: [ :indexPage | self assert: (indexPage items noneSatisfy: [ :item | item value == 3 ]) ].
+	"if we follow the next pointer, we find only the non-recyled data pages"
+	iterator := index newIterator.
+	counter := 0.
+	iterator pagesDo: [ :page |  counter := counter + 1].
+	"13 - 1 indexPage - 1 recycled page"
+	self assert: counter equals: 11.
+]
+
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (ston_array
+            (ston_value
+              (string))))
+        (class_header_pair
+          (ston_key)
+          (symbol))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (temporaries
+          (identifier)
+          (identifier)
+          (identifier)
+          (identifier)
+          (identifier))
+        (statement
+          (assignment
+            (identifier)
+            (unary_message
+              (unary_message
+                (identifier)
+                (unary_identifier))
+              (unary_identifier))))
+        (statement
+          (keyword_message
+            (number)
+            (keyword)
+            (identifier)
+            (keyword)
+            (block
+              (block_argument)
+              (statement
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (identifier)
+                  (keyword)
+                  (parenthesized_expression
+                    (keyword_message
+                      (identifier)
+                      (keyword)
+                      (number))))))))
+        (statement
+          (keyword_message
+            (self)
+            (keyword)
+            (unary_message
+              (unary_message
+                (identifier)
+                (unary_identifier))
+              (unary_identifier))
+            (keyword)
+            (number)))
+        (statement
+          (assignment
+            (identifier)
+            (identifier)))
+        (statement
+          (assignment
+            (identifier)
+            (unary_message
+              (identifier)
+              (unary_identifier))))
+        (statement
+          (keyword_message
+            (number)
+            (keyword)
+            (number)
+            (keyword)
+            (block
+              (block_argument)
+              (statement
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (binary_message
+                    (identifier)
+                    (binary_operator)
+                    (number))
+                  (keyword)
+                  (parenthesized_expression
+                    (keyword_message
+                      (parenthesized_expression
+                        (binary_message
+                          (identifier)
+                          (binary_operator)
+                          (number)))
+                      (keyword)
+                      (number)))))
+              (statement
+                (assignment
+                  (identifier)
+                  (unary_message
+                    (unary_message
+                      (identifier)
+                      (unary_identifier))
+                    (unary_identifier))))
+              (statement
+                (keyword_message
+                  (binary_message
+                    (identifier)
+                    (binary_operator)
+                    (number))
+                  (keyword)
+                  (parenthesized_expression
+                    (binary_message
+                      (identifier)
+                      (binary_operator)
+                      (identifier)))
+                  (keyword)
+                  (block
+                    (block_argument)
+                    (statement
+                      (keyword_message
+                        (identifier)
+                        (keyword)
+                        (identifier)
+                        (keyword)
+                        (parenthesized_expression
+                          (keyword_message
+                            (identifier)
+                            (keyword)
+                            (number))))))))
+              (statement
+                (assignment
+                  (identifier)
+                  (binary_message
+                    (identifier)
+                    (binary_operator)
+                    (identifier)))))))
+        (statement
+          (keyword_message
+            (self)
+            (keyword)
+            (unary_message
+              (unary_message
+                (identifier)
+                (unary_identifier))
+              (unary_identifier))
+            (keyword)
+            (number)))
+        (statement
+          (keyword_message
+            (identifier)
+            (keyword)
+            (parenthesized_expression
+              (keyword_message
+                (unary_message
+                  (identifier)
+                  (unary_identifier))
+                (keyword)
+                (number)))))
+        (statement
+          (keyword_message
+            (self)
+            (keyword)
+            (unary_message
+              (unary_message
+                (identifier)
+                (unary_identifier))
+              (unary_identifier))
+            (keyword)
+            (number)))
+        (comment)
+        (statement
+          (keyword_message
+            (self)
+            (keyword)
+            (unary_message
+              (unary_message
+                (identifier)
+                (unary_identifier))
+              (unary_identifier))
+            (keyword)
+            (number)))
+        (comment)
+        (statement
+          (keyword_message
+            (self)
+            (keyword)
+            (unary_message
+              (unary_message
+                (identifier)
+                (unary_identifier))
+              (unary_identifier))
+            (keyword)
+            (identifier)))
+        (comment)
+        (statement
+          (keyword_message
+            (unary_message
+              (identifier)
+              (unary_identifier))
+            (keyword)
+            (block
+              (block_argument)
+              (statement
+                (keyword_message
+                  (self)
+                  (keyword)
+                  (parenthesized_expression
+                    (keyword_message
+                      (unary_message
+                        (identifier)
+                        (unary_identifier))
+                      (keyword)
+                      (block
+                        (block_argument)
+                        (statement
+                          (binary_message
+                            (unary_message
+                              (identifier)
+                              (unary_identifier))
+                            (binary_operator)
+                            (number)))))))))))
+        (comment)
+        (statement
+          (assignment
+            (identifier)
+            (unary_message
+              (identifier)
+              (unary_identifier))))
+        (statement
+          (assignment
+            (identifier)
+            (number)))
+        (statement
+          (keyword_message
+            (identifier)
+            (keyword)
+            (block
+              (block_argument)
+              (statement
+                (assignment
+                  (identifier)
+                  (binary_message
+                    (identifier)
+                    (binary_operator)
+                    (number)))))))
+        (comment)
+        (statement
+          (keyword_message
+            (self)
+            (keyword)
+            (identifier)
+            (keyword)
+            (number)))))))

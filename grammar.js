@@ -166,6 +166,7 @@ module.exports = grammar({
         "[",
         optional(seq(repeat($.block_argument), "|")),
         optional($.temporaries),
+        optional("."),
         sep($.statement, "."),
         optional("."),
         "]"
