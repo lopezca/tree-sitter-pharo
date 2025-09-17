@@ -2999,3 +2999,75 @@ MacOSFileLock class >> fieldsDesc [
               (symbol)
               (symbol)
               (symbol))))))))
+
+================================================================================
+Real example #6 - QACIconSelectionDialog
+================================================================================
+"
+A dialog to select icons
+"
+Class {
+	#name : #QACIconSelectionDialog,
+	#superclass : #ComposableModel,
+	#instVars : [
+		'iconList',
+		'iconLibrary',
+		'addIconButton',
+		'iconReceiver',
+		'updateOnAccept'
+	],
+	#category : #'QuickAccess-Tools-UI-Dialogs'
+}
+
+{ #category : #accessing }
+QACIconSelectionDialog >> iconReceiver: anIconReceiver [
+	"The receiver of the icon when applied".
+	
+	iconReceiver := anIconReceiver  
+]
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (comment)
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (ston_array
+            (ston_value
+              (string))
+            (ston_value
+              (string))
+            (ston_value
+              (string))
+            (ston_value
+              (string))
+            (ston_value
+              (string))))
+        (class_header_pair
+          (ston_key)
+          (symbol))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (keyword_selector
+          (keyword)
+          (identifier)))
+      (comment)
+      (method_body
+        (statement
+          (assignment
+            (identifier)
+            (identifier)))))))
