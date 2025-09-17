@@ -782,6 +782,66 @@
     }
   },
   {
+    "type": "package_data",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ston_key",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "package_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "package_data",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "package_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "package_definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "parenthesized_expression",
     "named": true,
     "fields": {},
@@ -875,6 +935,10 @@
       "types": [
         {
           "type": "method",
+          "named": true
+        },
+        {
+          "type": "package_file",
           "named": true
         },
         {
@@ -1123,6 +1187,10 @@
   },
   {
     "type": ">>",
+    "named": false
+  },
+  {
+    "type": "Package",
     "named": false
   },
   {

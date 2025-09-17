@@ -16,7 +16,7 @@ module.exports = grammar({
   extras: ($) => [$.comment, /[\s\f]/],
 
   rules: {
-    source: ($) => choice($.source_file, $.method),
+    source: ($) => choice($.source_file, $.package_file, $.method),
     source_file: ($) => seq(optional($.comment), $.class_definition, repeat($.method_definition)),
 
     class_definition: ($) => seq($.type, $.class_header),
@@ -82,6 +82,15 @@ module.exports = grammar({
     method_body: ($) => prec.right(seq(repeat(choice($.pragma, $.temporaries)), sep1($.statement, optional(".")), optional("."))),
 
     method: ($) => prec.right(seq($.selector, repeat(choice($.pragma, $.temporaries)), sep(optional($.statement), "."))),
+
+    package_file: ($) => seq($.package_definition),
+
+    package_definition: ($) => seq(token('Package'), $.package_data),
+    package_data: ($) => prec.right(seq(
+        "{",
+        seq(field("key", alias("#name", $.ston_key)), ":", field("name", choice($.string, $.symbol))),
+        "}"
+      )),
 
     temporaries: ($) => prec.dynamic(10, seq("|", repeat($.identifier), "|")),
 
