@@ -2233,3 +2233,174 @@ DruidCogit >> objectRepresentationClass [
         (statement
           (return
             (self)))))))
+
+================================================================================
+Real example #3 - GSCoordinates
+================================================================================
+Class {
+	#name : #GSCoordinates,
+	#superclass : #Object,
+	#instVars : [
+		'latitude',
+		'longitude'
+	],
+	#classVars : [
+		'EarthRadius'
+	],
+	#category : #'GeoSphere-Model'
+}
+
+{ #category : #printing }
+GSCoordinates class >> dms: aNumber labels: labelArray to: aStream [
+	"Write the supplied number (latitude or longitude) as Degrees Minutes Seconds on aStream.
+	The labelArray provides the identifer for Degrees, Minutes and Seconds"
+
+	| absNumber degrees minutes seconds |
+
+	absNumber := aNumber abs.
+	degrees := absNumber truncated.
+	minutes := ((absNumber - degrees) * 60) truncated.
+	seconds := ((absNumber - degrees - (minutes / 60)) * 3600) roundTo: 0.01.
+	aStream 
+		print: degrees;
+		<< labelArray first;
+		print: minutes;
+		<< labelArray second;
+		<< (seconds asFloat printShowingDecimalPlaces: 2);
+		<< labelArray third.
+]
+
+--------------------------------------------------------------------------------
+(source
+      (source_file
+        (class_definition
+          (type)
+          (class_header
+            (class_header_pair
+              (ston_key)
+              (symbol))
+            (class_header_pair
+              (ston_key)
+              (symbol))
+            (class_header_pair
+              (ston_key)
+              (ston_array
+                (ston_value
+                  (string))
+                (ston_value
+                  (string))))
+            (class_header_pair
+              (ston_key)
+              (ston_array
+                (ston_value
+                  (string))))
+            (class_header_pair
+              (ston_key)
+              (symbol))))
+        (method_definition
+          (method_metadata
+            (method_metadata_object
+              (method_metadata_pair
+                (ston_key)
+                (symbol))))
+          (method_header
+            (identifier)
+            (class_keyword)
+            (keyword_selector
+              (keyword)
+              (identifier)
+              (keyword)
+              (identifier)
+              (keyword)
+              (identifier)))
+          (comment)
+          (method_body
+            (temporaries
+              (identifier)
+              (identifier)
+              (identifier)
+              (identifier))
+            (statement
+              (assignment
+                (identifier)
+                (unary_message
+                  (identifier)
+                  (unary_identifier))))
+            (statement
+              (assignment
+                (identifier)
+                (unary_message
+                  (identifier)
+                  (unary_identifier))))
+            (statement
+              (assignment
+                (identifier)
+                (unary_message
+                  (parenthesized_expression
+                    (binary_message
+                      (parenthesized_expression
+                        (binary_message
+                          (identifier)
+                          (binary_operator)
+                          (identifier)))
+                      (binary_operator)
+                      (number)))
+                  (unary_identifier))))
+            (statement
+              (assignment
+                (identifier)
+                (keyword_message
+                  (parenthesized_expression
+                    (binary_message
+                      (parenthesized_expression
+                        (binary_message
+                          (binary_message
+                            (identifier)
+                            (binary_operator)
+                            (identifier))
+                          (binary_operator)
+                          (parenthesized_expression
+                            (binary_message
+                              (identifier)
+                              (binary_operator)
+                              (number)))))
+                      (binary_operator)
+                      (number)))
+                  (keyword)
+                  (number))))
+            (statement
+              (cascade
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (identifier))
+                (cascaded_binary_message
+                  (binary_operator)
+                  (cascade
+                    (unary_message
+                      (identifier)
+                      (unary_identifier))
+                    (cascaded_keyword_message
+                      (keyword)
+                      (identifier))
+                    (cascaded_binary_message
+                      (binary_operator)
+                      (cascade
+                        (unary_message
+                          (identifier)
+                          (unary_identifier))
+                        (cascaded_binary_message
+                          (binary_operator)
+                          (cascade
+                            (parenthesized_expression
+                              (keyword_message
+                                (unary_message
+                                  (identifier)
+                                  (unary_identifier))
+                                (keyword)
+                                (number)))
+                            (cascaded_binary_message
+                              (binary_operator)
+                              (unary_message
+                                (identifier)
+                                (unary_identifier)))))))))))))))

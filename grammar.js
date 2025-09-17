@@ -79,7 +79,7 @@ module.exports = grammar({
     method_header: ($) => seq($.identifier, optional($.class_keyword), '>>', $.selector),
     class_keyword: ($) => 'class',
     
-    method_body: ($) => prec.right(seq(repeat(choice($.pragma, $.temporaries)), sep1($.statement, optional(".")))),
+    method_body: ($) => prec.right(seq(repeat(choice($.pragma, $.temporaries)), sep1($.statement, optional(".")), optional("."))),
 
     method: ($) => prec.right(seq($.selector, repeat(choice($.pragma, $.temporaries)), sep(optional($.statement), "."))),
 
