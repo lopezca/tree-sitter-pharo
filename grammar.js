@@ -79,7 +79,7 @@ module.exports = grammar({
       ),
     
     method_header: ($) => seq($.identifier, optional($.class_keyword), '>>', $.selector),
-    class_keyword: ($) => 'class',
+    class_keyword: ($) => choice('class', 'classSide'),
     
     method_body: ($) =>
       prec.right(

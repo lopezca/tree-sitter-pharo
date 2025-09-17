@@ -509,6 +509,11 @@
     }
   },
   {
+    "type": "class_keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "dynamic_array",
     "named": true,
     "fields": {},
@@ -1218,8 +1223,12 @@
     "named": true
   },
   {
-    "type": "class_keyword",
-    "named": true
+    "type": "class",
+    "named": false
+  },
+  {
+    "type": "classSide",
+    "named": false
   },
   {
     "type": "comment",

@@ -3071,3 +3071,207 @@ QACIconSelectionDialog >> iconReceiver: anIconReceiver [
           (assignment
             (identifier)
             (identifier)))))))
+
+================================================================================
+Real example #7 - PHCTUniquelyIdentified
+================================================================================
+"
+Objects that are uniquely identified
+"
+Trait {
+	#name : #PHCTUniquelyIdentified,
+	#instVars : [
+		'id'
+	],
+	#category : #'Pharo-Compendium-Core-Traits'
+}
+
+{ #category : #utilities }
+PHCTUniquelyIdentified classSide >> generateUniqueID [
+
+	^UUID new asString copyReplaceAll: '-' with: ''
+]
+
+{ #category : #comparing }
+PHCTUniquelyIdentified >> = anotherObject [
+	^anotherObject class == self class
+		and: [ anotherObject id = self id ]
+	
+]
+
+{ #category : #'private - utilities' }
+PHCTUniquelyIdentified >> generateUniqueID [
+
+	^self class generateUniqueID
+]
+
+{ #category : #comparing }
+PHCTUniquelyIdentified >> hash [
+
+	^id hash 
+]
+
+{ #category : #accessing }
+PHCTUniquelyIdentified >> id [
+	"Returns the receivers unique identifier"
+	
+	^ id ifNil: [ id := self generateUniqueID ]
+]
+
+{ #category : #accessing }
+PHCTUniquelyIdentified >> id: anObject [
+	"Sets the receivers unique identifier"
+	
+	id := anObject
+]
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (comment)
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (ston_array
+            (ston_value
+              (string))))
+        (class_header_pair
+          (ston_key)
+          (symbol))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (class_keyword)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (statement
+          (return
+            (keyword_message
+              (unary_message
+                (unary_message
+                  (identifier)
+                  (unary_identifier))
+                (unary_identifier))
+              (keyword)
+              (string)
+              (keyword)
+              (string))))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (binary_selector
+          (binary_operator)
+          (identifier)))
+      (method_body
+        (statement
+          (return
+            (keyword_message
+              (binary_message
+                (unary_message
+                  (identifier)
+                  (unary_identifier))
+                (binary_operator)
+                (unary_message
+                  (self)
+                  (unary_identifier)))
+              (keyword)
+              (block
+                (statement
+                  (binary_message
+                    (unary_message
+                      (identifier)
+                      (unary_identifier))
+                    (binary_operator)
+                    (unary_message
+                      (self)
+                      (unary_identifier))))))))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (statement
+          (return
+            (unary_message
+              (unary_message
+                (self)
+                (unary_identifier))
+              (unary_identifier))))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (statement
+          (return
+            (unary_message
+              (identifier)
+              (unary_identifier))))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (comment)
+      (method_body
+        (statement
+          (return
+            (keyword_message
+              (identifier)
+              (keyword)
+              (block
+                (statement
+                  (assignment
+                    (identifier)
+                    (unary_message
+                      (self)
+                      (unary_identifier))))))))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (keyword_selector
+          (keyword)
+          (identifier)))
+      (comment)
+      (method_body
+        (statement
+          (assignment
+            (identifier)
+            (identifier)))))))

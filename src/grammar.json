@@ -943,8 +943,17 @@
       ]
     },
     "class_keyword": {
-      "type": "STRING",
-      "value": "class"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "class"
+        },
+        {
+          "type": "STRING",
+          "value": "classSide"
+        }
+      ]
     },
     "method_body": {
       "type": "PREC_RIGHT",
