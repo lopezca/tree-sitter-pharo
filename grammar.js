@@ -9,8 +9,6 @@ module.exports = grammar({
   conflicts: ($) => [
     [$.temporaries, $.primary],
     [$.temporaries, $.temporaries],
-    [$.literal_array, $._literal_array_element],
-    [$._literal_array_element, $.nested_array_literal],
   ],
   inline: ($) => [$.keyword_part],
   externals: ($) => [$.keyword],
@@ -167,8 +165,6 @@ module.exports = grammar({
       alias(new RegExp(symbol_chars), $.symbol),
       alias($.binary_operator, $.symbol),
       alias(/\./, $.symbol),
-      alias('(', $.symbol),
-      alias(')', $.symbol),
       alias('[', $.symbol),
       alias(']', $.symbol),
       alias('{', $.symbol),

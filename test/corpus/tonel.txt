@@ -3284,3 +3284,323 @@ PHCTUniquelyIdentified >> id: anObject [
           (assignment
             (identifier)
             (identifier)))))))
+
+================================================================================
+Real example #8 - PHCTUniquelyIdentified
+================================================================================
+"
+I'm an abstract test case for Graph behavior
+"
+Class {
+	#name : #GraphTest,
+	#superclass : #TestCase,
+	#category : #'Mole-Tests-Graph'
+}
+
+{ #category : #'tests - instance creation' }
+GraphTest >> testLabeledGraph [
+
+	| graph |
+
+	graph := self labeledGraph.
+
+	self
+		assertCollection: graph vertices hasSameElements: #(1 2 3 4);
+		assertCollection: (graph neighborsOf: 1) hasSameElements: #(2 3);
+		assertCollection: (graph neighborsOf: 2) hasSameElements: #(1);
+		assertCollection: (graph neighborsOf: 3) hasSameElements: #(1);
+		assertCollection: (graph neighborsOf: 4) hasSameElements: #(4).
+
+	self
+		assertEdgesIncidentTo: 1
+			in: graph
+			match:
+			(Dictionary new
+				at: '#(1 2)' put: 'W12';
+				at: '#(1 3)' put: 'W13';
+				yourself);
+		assertEdgesIncidentTo: 2
+			in: graph
+			match:
+			(Dictionary new
+				at: '#(1 2)' put: 'W12';
+				yourself);
+		assertEdgesIncidentTo: 3
+			in: graph
+			match:
+			(Dictionary new
+				at: '#(1 3)' put: 'W13';
+				yourself);
+		assertEdgesIncidentTo: 4
+			in: graph
+			match:
+			(Dictionary new
+				at: '#(4 4)' put: 'W44';
+				yourself)
+]
+
+{ #category : #'tests - converting' }
+GraphTest >> testNeighborsOf [
+
+	| graph |
+
+	graph := self graphWithFiveVerticesAndTwoEdges.
+
+	self
+		assert: (graph neighborsOf: 1) isEmpty;
+		assertCollection: (graph neighborsOf: 2) equals: #(3) asSet;
+		assertCollection: (graph neighborsOf: 3) equals: #(2 4) asSet;
+		assertCollection: (graph neighborsOf: 4) equals: #(3) asSet;
+		assert: (graph neighborsOf: 5) isEmpty
+]
+
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (comment)
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol
+            (string)))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol
+              (string)))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (temporaries
+          (identifier))
+        (statement
+          (assignment
+            (identifier)
+            (unary_message
+              (self)
+              (unary_identifier))))
+        (statement
+          (cascade
+            (keyword_message
+              (self)
+              (keyword)
+              (unary_message
+                (identifier)
+                (unary_identifier))
+              (keyword)
+              (literal_array
+                (number)
+                (number)
+                (number)
+                (number)))
+            (cascaded_keyword_message
+              (keyword)
+              (parenthesized_expression
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (number)))
+              (keyword)
+              (literal_array
+                (number)
+                (number)))
+            (cascaded_keyword_message
+              (keyword)
+              (parenthesized_expression
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (number)))
+              (keyword)
+              (literal_array
+                (number)))
+            (cascaded_keyword_message
+              (keyword)
+              (parenthesized_expression
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (number)))
+              (keyword)
+              (literal_array
+                (number)))
+            (cascaded_keyword_message
+              (keyword)
+              (parenthesized_expression
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (number)))
+              (keyword)
+              (literal_array
+                (number)))))
+        (statement
+          (cascade
+            (keyword_message
+              (self)
+              (keyword)
+              (number)
+              (keyword)
+              (identifier)
+              (keyword)
+              (parenthesized_expression
+                (cascade
+                  (keyword_message
+                    (unary_message
+                      (identifier)
+                      (unary_identifier))
+                    (keyword)
+                    (string)
+                    (keyword)
+                    (string))
+                  (cascaded_keyword_message
+                    (keyword)
+                    (string)
+                    (keyword)
+                    (string))
+                  (cascaded_unary_message
+                    (unary_identifier)))))
+            (cascaded_keyword_message
+              (keyword)
+              (number)
+              (keyword)
+              (identifier)
+              (keyword)
+              (parenthesized_expression
+                (cascade
+                  (keyword_message
+                    (unary_message
+                      (identifier)
+                      (unary_identifier))
+                    (keyword)
+                    (string)
+                    (keyword)
+                    (string))
+                  (cascaded_unary_message
+                    (unary_identifier)))))
+            (cascaded_keyword_message
+              (keyword)
+              (number)
+              (keyword)
+              (identifier)
+              (keyword)
+              (parenthesized_expression
+                (cascade
+                  (keyword_message
+                    (unary_message
+                      (identifier)
+                      (unary_identifier))
+                    (keyword)
+                    (string)
+                    (keyword)
+                    (string))
+                  (cascaded_unary_message
+                    (unary_identifier)))))
+            (cascaded_keyword_message
+              (keyword)
+              (number)
+              (keyword)
+              (identifier)
+              (keyword)
+              (parenthesized_expression
+                (cascade
+                  (keyword_message
+                    (unary_message
+                      (identifier)
+                      (unary_identifier))
+                    (keyword)
+                    (string)
+                    (keyword)
+                    (string))
+                  (cascaded_unary_message
+                    (unary_identifier)))))))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol
+              (string)))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (temporaries
+          (identifier))
+        (statement
+          (assignment
+            (identifier)
+            (unary_message
+              (self)
+              (unary_identifier))))
+        (statement
+          (cascade
+            (keyword_message
+              (self)
+              (keyword)
+              (unary_message
+                (parenthesized_expression
+                  (keyword_message
+                    (identifier)
+                    (keyword)
+                    (number)))
+                (unary_identifier)))
+            (cascaded_keyword_message
+              (keyword)
+              (parenthesized_expression
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (number)))
+              (keyword)
+              (unary_message
+                (literal_array
+                  (number))
+                (unary_identifier)))
+            (cascaded_keyword_message
+              (keyword)
+              (parenthesized_expression
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (number)))
+              (keyword)
+              (unary_message
+                (literal_array
+                  (number)
+                  (number))
+                (unary_identifier)))
+            (cascaded_keyword_message
+              (keyword)
+              (parenthesized_expression
+                (keyword_message
+                  (identifier)
+                  (keyword)
+                  (number)))
+              (keyword)
+              (unary_message
+                (literal_array
+                  (number))
+                (unary_identifier)))
+            (cascaded_keyword_message
+              (keyword)
+              (unary_message
+                (parenthesized_expression
+                  (keyword_message
+                    (identifier)
+                    (keyword)
+                    (number)))
+                (unary_identifier)))))))))
