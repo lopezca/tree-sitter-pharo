@@ -139,6 +139,143 @@ MyClass class >> bar [
             (number)))))))
 
 ================================================================================
+Empty body
+================================================================================
+Class {
+    #name : #MyClass,
+    #superclass : #Object,
+    #category : 'MyCategory',
+    #package : 'MyPackage'
+}
+
+{ #category : #accessing }
+MyClass >> foo [
+]
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (string))
+        (class_header_pair
+          (ston_key)
+          (string))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier))))))
+
+================================================================================
+Pragma only body
+================================================================================
+Class {
+    #name : #MyClass,
+    #superclass : #Object,
+    #category : 'MyCategory',
+    #package : 'MyPackage'
+}
+
+{ #category : #accessing }
+MyClass >> primitiveFoo [
+    <primitive: 'foo'>
+]
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (string))
+        (class_header_pair
+          (ston_key)
+          (string))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (pragma
+          (pragma_keyword_selector
+            (keyword)
+            (string)))))))
+
+================================================================================
+Temps only body
+================================================================================
+Class {
+    #name : #MyClass,
+    #superclass : #Object,
+    #category : 'MyCategory',
+    #package : 'MyPackage'
+}
+
+{ #category : #accessing }
+MyClass >> foo [
+    | this that |
+]
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (string))
+        (class_header_pair
+          (ston_key)
+          (string))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (temporaries
+          (identifier)
+          (identifier))))))
+
+================================================================================
 Package file
 ================================================================================
 Package { #name : #'GeoSphere-Model' }

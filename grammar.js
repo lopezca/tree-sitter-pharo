@@ -81,7 +81,20 @@ module.exports = grammar({
     method_header: ($) => seq($.identifier, optional($.class_keyword), '>>', $.selector),
     class_keyword: ($) => 'class',
     
-    method_body: ($) => prec.right(seq(repeat(choice($.pragma, $.temporaries)), sep1($.statement, optional(".")), optional("."))),
+    method_body: ($) =>
+      prec.right(
+        choice(
+          seq(
+            repeat1(choice($.pragma, $.temporaries)),
+            optional(seq(sep1($.statement, optional(".")), optional(".")))
+          ),
+          seq(
+            repeat(choice($.pragma, $.temporaries)),
+            sep1($.statement, optional(".")),
+            optional(".")
+          )
+        )
+      ),
 
     method: ($) => prec.right(seq($.selector, repeat(choice($.pragma, $.temporaries)), sep(optional($.statement), "."))),
 
@@ -161,6 +174,7 @@ module.exports = grammar({
       alias('{', $.symbol),
       alias('}', $.symbol),
       alias(':', $.symbol),
+      alias(':=', $.symbol),
       alias(';', $.symbol),
       alias('^', $.symbol),
       alias($.identifier, $.symbol),
