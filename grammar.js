@@ -10,7 +10,6 @@ module.exports = grammar({
   conflicts: ($) => [
     [$.temporaries, $.primary],
     [$.temporaries, $.temporaries],
-    [$.dashed_symbol, $.symbol]
   ],
   inline: ($) => [$.keyword_part],
   externals: ($) => [$.keyword],
@@ -170,6 +169,7 @@ module.exports = grammar({
       $.true,
       $.false,
       $.symbol,
+      $.byte_array,
       alias(new RegExp(literal_array_symbol_chars), $.symbol),
       alias($.binary_operator, $.symbol),
       alias(/\./, $.symbol),

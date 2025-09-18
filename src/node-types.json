@@ -619,6 +619,10 @@
       "required": false,
       "types": [
         {
+          "type": "byte_array",
+          "named": true
+        },
+        {
           "type": "character",
           "named": true
         },

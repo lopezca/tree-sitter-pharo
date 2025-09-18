@@ -1832,6 +1832,10 @@
           "name": "symbol"
         },
         {
+          "type": "SYMBOL",
+          "name": "byte_array"
+        },
+        {
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
@@ -2318,10 +2322,6 @@
     [
       "temporaries",
       "temporaries"
-    ],
-    [
-      "dashed_symbol",
-      "symbol"
     ]
   ],
   "precedences": [],
