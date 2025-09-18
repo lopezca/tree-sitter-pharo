@@ -143,6 +143,7 @@ module.exports = grammar({
     string: ($) => token(seq("'", /([^']|'')*/, "'")),
     symbol: ($) => seq(
       "#",
+      optional("#"),
       choice(
         new RegExp(symbol_chars),
         $.string,
