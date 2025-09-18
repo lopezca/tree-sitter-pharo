@@ -143,7 +143,7 @@ module.exports = grammar({
     string: ($) => token(seq("'", /([^']|'')*/, "'")),
     symbol: ($) => seq(
       "#",
-      optional("#"),
+      repeat("#"),
       choice(
         new RegExp(symbol_chars),
         $.string,
@@ -158,8 +158,8 @@ module.exports = grammar({
     return: ($) => seq("^", $.expression),
 
     dynamic_array: ($) => seq("{", sep($.expression, "."), optional("."), "}"),
-    byte_array: ($) => seq("#[", repeat($.number), "]"),
-    literal_array: ($) => seq("#(", repeat($._literal_array_element), ")"),
+    byte_array: ($) => seq("#", repeat("#"), "[", repeat($.number), "]"),
+    literal_array: ($) => seq("#", repeat("#"), "(", repeat($._literal_array_element), ")"),
     _literal_array_element: ($) => choice(
       $.string,
       $.number,
