@@ -353,6 +353,10 @@
         "required": false,
         "types": [
           {
+            "type": "dashed_symbol",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -376,6 +380,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "dashed_symbol",
+            "named": true
+          },
           {
             "type": "string",
             "named": true
@@ -421,6 +429,10 @@
         "required": false,
         "types": [
           {
+            "type": "dashed_symbol",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -434,6 +446,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "dashed_symbol",
+            "named": true
+          },
           {
             "type": "string",
             "named": true
@@ -459,6 +475,10 @@
         "required": false,
         "types": [
           {
+            "type": "dashed_symbol",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -473,6 +493,10 @@
         "required": false,
         "types": [
           {
+            "type": "dashed_symbol",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -486,6 +510,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "dashed_symbol",
+            "named": true
+          },
           {
             "type": "string",
             "named": true
@@ -510,6 +538,11 @@
   },
   {
     "type": "class_keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "dashed_symbol",
     "named": true,
     "fields": {}
   },
@@ -1068,6 +1101,10 @@
       "required": true,
       "types": [
         {
+          "type": "dashed_symbol",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -1183,6 +1220,10 @@
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
     "named": false
   },
   {

@@ -1,5 +1,6 @@
 const binary_chars = "-+\\\\/*~<>=@,%|&?!";
 const symbol_chars = `[A-Za-z0-9_:]+|[${binary_chars}]+`;
+const literal_array_symbol_chars = `[A-Za-z_:]+|[${binary_chars}]+`;
 const identifier_regex = /[A-Za-z_][A-Za-z0-9_]*/;
 
 module.exports = grammar({
@@ -9,6 +10,7 @@ module.exports = grammar({
   conflicts: ($) => [
     [$.temporaries, $.primary],
     [$.temporaries, $.temporaries],
+    [$.dashed_symbol, $.symbol]
   ],
   inline: ($) => [$.keyword_part],
   externals: ($) => [$.keyword],
@@ -30,13 +32,19 @@ module.exports = grammar({
     ),
     ston_pair: ($) => seq($.ston_key, ":", $.ston_value),
     ston_key: ($) => $.symbol,
+    dashed_symbol: ($) => seq(
+      "#",
+      new RegExp(symbol_chars),
+      repeat1(seq("-", new RegExp(symbol_chars)))
+    ),
     ston_value: ($) =>
       choice(
         $.symbol,
         $.string,
         $.number,
         $.ston_array,
-        $.ston_object
+        $.ston_object,
+        $.dashed_symbol
       ),
     ston_array: ($) => seq("[", sep($.ston_value, ","), optional(","), "]"),
 
@@ -50,17 +58,17 @@ module.exports = grammar({
 
     class_header_pair: ($) =>
       choice(
-        prec(1, seq(field("key", alias("#name", $.ston_key)),          ":", field("name", choice($.string, $.symbol)))),
-        prec(1, seq(field("key", alias("#superclass", $.ston_key)),    ":", field("superclass", choice($.string, $.symbol)))),
-        prec(1, seq(field("key", alias("#traits", $.ston_key)),        ":", field("traits", choice($.string, $.symbol)))),
-        prec(1, seq(field("key", alias("#classTraits", $.ston_key)),   ":", field("classTraits", choice($.string, $.symbol)))),
-        prec(1, seq(field("key", alias("#category", $.ston_key)),      ":", field("category", choice($.string, $.symbol)))),
-        prec(1, seq(field("key", alias("#package", $.ston_key)),       ":", field("package", choice($.string, $.symbol)))),
+        prec(1, seq(field("key", alias("#name", $.ston_key)),          ":", field("name", choice($.string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#superclass", $.ston_key)),    ":", field("superclass", choice($.string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#traits", $.ston_key)),        ":", field("traits", choice($.string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#classTraits", $.ston_key)),   ":", field("classTraits", choice($.string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#category", $.ston_key)),      ":", field("category", choice($.string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#package", $.ston_key)),       ":", field("package", choice($.string, $.symbol, $.dashed_symbol)))),
         prec(1, seq(field("key", alias("#instVars", $.ston_key)),      ":", field("instVars", $.ston_array))),
         prec(1, seq(field("key", alias("#classVars", $.ston_key)),     ":", field("classVars", $.ston_array))),
         prec(1, seq(field("key", alias("#pools", $.ston_key)),         ":", field("pools", $.ston_array))),
         prec(1, seq(field("key", alias("#classInstVars", $.ston_key)), ":", field("classInstVars", $.ston_array))),
-        prec(1, seq(field("key", alias("#type", $.ston_key)),          ":", field("type", choice($.string, $.symbol)))),
+        prec(1, seq(field("key", alias("#type", $.ston_key)),          ":", field("type", choice($.string, $.symbol, $.dashed_symbol)))),
         prec(0, $.ston_pair)
       ),
 
@@ -162,7 +170,7 @@ module.exports = grammar({
       $.true,
       $.false,
       $.symbol,
-      alias(new RegExp(symbol_chars), $.symbol),
+      alias(new RegExp(literal_array_symbol_chars), $.symbol),
       alias($.binary_operator, $.symbol),
       alias(/\./, $.symbol),
       alias('[', $.symbol),

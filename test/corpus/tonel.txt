@@ -44,6 +44,38 @@ MyClass >> foo [
         (statement
           (return
             (number)))))))
+
+================================================================================
+Instance Method Tonel File
+================================================================================
+Class {
+	#name : #ObjCSpecParserTest,
+	#superclass : #TestCase,
+	#instVars : [
+		'parser'
+	],
+	#category : #Objective-C-Tests
+}
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (ston_array
+            (ston_value
+              (string))))
+        (class_header_pair
+          (ston_key)
+          (dashed_symbol))))))
 ================================================================================
 Instance Method Tonel File with symbol method meta
 ================================================================================

@@ -159,6 +159,35 @@
       "type": "SYMBOL",
       "name": "symbol"
     },
+    "dashed_symbol": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[A-Za-z0-9_:]+|[-+\\\\/*~<>=@,%|&?!]+"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "-"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[A-Za-z0-9_:]+|[-+\\\\/*~<>=@,%|&?!]+"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "ston_value": {
       "type": "CHOICE",
       "members": [
@@ -181,6 +210,10 @@
         {
           "type": "SYMBOL",
           "name": "ston_object"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dashed_symbol"
         }
       ]
     },
@@ -343,6 +376,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "symbol"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dashed_symbol"
                     }
                   ]
                 }
@@ -386,6 +423,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "symbol"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dashed_symbol"
                     }
                   ]
                 }
@@ -429,6 +470,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "symbol"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dashed_symbol"
                     }
                   ]
                 }
@@ -472,6 +517,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "symbol"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dashed_symbol"
                     }
                   ]
                 }
@@ -515,6 +564,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "symbol"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dashed_symbol"
                     }
                   ]
                 }
@@ -558,6 +611,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "symbol"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dashed_symbol"
                     }
                   ]
                 }
@@ -737,6 +794,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "symbol"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dashed_symbol"
                     }
                   ]
                 }
@@ -1774,7 +1835,7 @@
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
-            "value": "[A-Za-z0-9_:]+|[-+\\\\/*~<>=@,%|&?!]+"
+            "value": "[A-Za-z_:]+|[-+\\\\/*~<>=@,%|&?!]+"
           },
           "named": true,
           "value": "symbol"
@@ -2257,6 +2318,10 @@
     [
       "temporaries",
       "temporaries"
+    ],
+    [
+      "dashed_symbol",
+      "symbol"
     ]
   ],
   "precedences": [],
