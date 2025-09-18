@@ -10,13 +10,14 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (cascade
-        (unary_message
-          (identifier)
-          (unary_identifier))
-        (cascaded_unary_message
-          (unary_identifier))))))
+    (method_body
+      (statement
+        (cascade
+          (unary_message
+            (identifier)
+            (unary_identifier))
+          (cascaded_unary_message
+            (unary_identifier)))))))
 
 ================================================================================
 Cascade to Binary Messages
@@ -30,15 +31,16 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (cascade
-        (binary_message
-          (identifier)
-          (binary_operator)
-          (number))
-        (cascaded_binary_message
-          (binary_operator)
-          (number))))))
+    (method_body
+      (statement
+        (cascade
+          (binary_message
+            (identifier)
+            (binary_operator)
+            (number))
+          (cascaded_binary_message
+            (binary_operator)
+            (number)))))))
 
 ================================================================================
 Cascade to Keyword Messages
@@ -54,17 +56,18 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (cascade
-        (keyword_message
-          (identifier)
-          (keyword)
-          (number))
-        (cascaded_keyword_message
-          (keyword)
-          (number)
-          (keyword)
-          (number))))))
+    (method_body
+      (statement
+        (cascade
+          (keyword_message
+            (identifier)
+            (keyword)
+            (number))
+          (cascaded_keyword_message
+            (keyword)
+            (number)
+            (keyword)
+            (number)))))))
 
 ================================================================================
 Cascade to Many Keyword Messages
@@ -82,22 +85,23 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (cascade
-        (keyword_message
-          (identifier)
-          (keyword)
-          (number))
-        (cascaded_keyword_message
-          (keyword)
-          (number)
-          (keyword)
-          (number))
-        (cascaded_keyword_message
-          (keyword)
-          (number)
-          (keyword)
-          (number))
-        (cascaded_keyword_message
-          (keyword)
-          (number))))))
+    (method_body
+      (statement
+        (cascade
+          (keyword_message
+            (identifier)
+            (keyword)
+            (number))
+          (cascaded_keyword_message
+            (keyword)
+            (number)
+            (keyword)
+            (number))
+          (cascaded_keyword_message
+            (keyword)
+            (number)
+            (keyword)
+            (number))
+          (cascaded_keyword_message
+            (keyword)
+            (number)))))))

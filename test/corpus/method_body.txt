@@ -9,7 +9,8 @@ test: abc
 (source
   (method
     (keyword_selector (keyword) (identifier))
-    (statement (identifier))))
+    (method_body
+      (statement (identifier)))))
 
 =================
 Multiple statements
@@ -24,9 +25,10 @@ test: abc
 (source
   (method
     (keyword_selector (keyword) (identifier))
-    (statement (identifier))
-    (statement (identifier))
-    (statement (identifier))))
+    (method_body
+      (statement (identifier))
+      (statement (identifier))
+      (statement (identifier)))))
 
 =================
 Multiple statements trailing dot
@@ -41,9 +43,10 @@ test: abc
 (source
   (method
     (keyword_selector (keyword) (identifier))
-    (statement (identifier))
-    (statement (identifier))
-    (statement (identifier))))
+    (method_body
+      (statement (identifier))
+      (statement (identifier))
+      (statement (identifier)))))
 
 =================
 Multiple trailing dots
@@ -58,9 +61,10 @@ test: abc
 (source
   (method
     (keyword_selector (keyword) (identifier))
-    (statement (identifier))
-    (statement (identifier))
-    (statement (identifier))))
+    (method_body
+      (statement (identifier))
+      (statement (identifier))
+      (statement (identifier)))))
 
 =================
 With temporaries
@@ -76,10 +80,11 @@ test: abc
 (source
   (method
     (keyword_selector (keyword) (identifier))
-    (temporaries (identifier) (identifier))
-    (statement (identifier))
-    (statement (identifier))
-    (statement (identifier))))
+    (method_body
+      (temporaries (identifier) (identifier))
+      (statement (identifier))
+      (statement (identifier))
+      (statement (identifier)))))
 
 =================
 With empty temporaries
@@ -95,10 +100,11 @@ test: abc
 (source
   (method
     (keyword_selector (keyword) (identifier))
-    (temporaries)
-    (statement (identifier))
-    (statement (identifier))
-    (statement (identifier))))
+    (method_body
+      (temporaries)
+      (statement (identifier))
+      (statement (identifier))
+      (statement (identifier)))))
 
 =================
 With Return
@@ -114,10 +120,11 @@ test: abc
 (source
   (method
     (keyword_selector (keyword) (identifier))
-    (temporaries)
-    (statement (identifier))
-    (statement (identifier))
-    (statement (return (identifier)))))
+    (method_body
+      (temporaries)
+      (statement (identifier))
+      (statement (identifier))
+      (statement (return (identifier))))))
 
 =================
 Dots after selector
@@ -129,6 +136,7 @@ test: abc ...
 (source
   (method
     (keyword_selector (keyword) (identifier))
-    (statement
-      (return
-        (number)))))
+    (method_body
+      (statement
+        (return
+          (number))))))

@@ -10,10 +10,11 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (assignment
-        (identifier)
-        (identifier)))))
+    (method_body
+      (statement
+        (assignment
+          (identifier)
+          (identifier))))))
 
 ================================================================================
 Assignment to Binary Message
@@ -27,13 +28,14 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (assignment
-        (identifier)
-        (binary_message
+    (method_body
+      (statement
+        (assignment
           (identifier)
-          (binary_operator)
-          (identifier))))))
+          (binary_message
+            (identifier)
+            (binary_operator)
+            (identifier)))))))
 
 ================================================================================
 Nested Assignments
@@ -47,12 +49,13 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (assignment
-        (identifier)
+    (method_body
+      (statement
         (assignment
           (identifier)
-          (identifier))))))
+          (assignment
+            (identifier)
+            (identifier)))))))
 
 ================================================================================
 Assignment to Keyword Message
@@ -66,15 +69,16 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (assignment
-        (identifier)
-        (keyword_message
+    (method_body
+      (statement
+        (assignment
           (identifier)
-          (keyword)
-          (identifier)
-          (keyword)
-          (identifier))))))
+          (keyword_message
+            (identifier)
+            (keyword)
+            (identifier)
+            (keyword)
+            (identifier)))))))
 
 ================================================================================
 Assignment in Keyword Message
@@ -88,14 +92,15 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (keyword_message
-        (identifier)
-        (keyword)
-        (parenthesized_expression
-          (assignment
-            (identifier)
-            (identifier)))))))
+    (method_body
+      (statement
+        (keyword_message
+          (identifier)
+          (keyword)
+          (parenthesized_expression
+            (assignment
+              (identifier)
+              (identifier))))))))
 
 ================================================================================
 Assignment no space
@@ -109,10 +114,11 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (assignment
-        (identifier)
-        (identifier)))))
+    (method_body
+      (statement
+        (assignment
+          (identifier)
+          (identifier))))))
 
 ================================================================================
 Assignment after keyword method declaration
@@ -126,8 +132,9 @@ a: arg
     (keyword_selector
       (keyword)
       (identifier))
-    (statement
-      (assignment
-        (identifier)
-        (identifier)))))
+    (method_body
+      (statement
+        (assignment
+          (identifier)
+          (identifier))))))
 

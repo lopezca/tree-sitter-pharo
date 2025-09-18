@@ -10,10 +10,11 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (unary_message
-        (identifier)
-        (unary_identifier)))))
+    (method_body
+      (statement
+        (unary_message
+          (identifier)
+          (unary_identifier))))))
 
 ================================================================================
 Binary Message Send
@@ -27,11 +28,12 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (binary_message
-        (identifier)
-        (binary_operator)
-        (identifier)))))
+    (method_body
+      (statement
+        (binary_message
+          (identifier)
+          (binary_operator)
+          (identifier))))))
 
 ================================================================================
 Single Keyword Message Send
@@ -45,11 +47,12 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (keyword_message
-        (identifier)
-        (keyword)
-        (identifier)))))
+    (method_body
+      (statement
+        (keyword_message
+          (identifier)
+          (keyword)
+          (identifier))))))
 
 ================================================================================
 Unary in Binary, unary last
@@ -63,13 +66,14 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (binary_message
-        (identifier)
-        (binary_operator)
-        (unary_message
+    (method_body
+      (statement
+        (binary_message
           (identifier)
-          (unary_identifier))))))
+          (binary_operator)
+          (unary_message
+            (identifier)
+            (unary_identifier)))))))
 
 ================================================================================
 Nested Binary
@@ -83,17 +87,18 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (binary_message
+    (method_body
+      (statement
         (binary_message
           (binary_message
-            (identifier)
+            (binary_message
+              (identifier)
+              (binary_operator)
+              (identifier))
             (binary_operator)
             (identifier))
           (binary_operator)
-          (identifier))
-        (binary_operator)
-        (identifier)))))
+          (identifier))))))
 
 ================================================================================
 Unary in Binary, unary first
@@ -107,13 +112,14 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (binary_message
-        (unary_message
-          (identifier)
-          (unary_identifier))
-        (binary_operator)
-        (identifier)))))
+    (method_body
+      (statement
+        (binary_message
+          (unary_message
+            (identifier)
+            (unary_identifier))
+          (binary_operator)
+          (identifier))))))
 
 ================================================================================
 Multiple Keyword Messages
@@ -127,13 +133,14 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (keyword_message
-        (identifier)
-        (keyword)
-        (identifier)
-        (keyword)
-        (identifier)))))
+    (method_body
+      (statement
+        (keyword_message
+          (identifier)
+          (keyword)
+          (identifier)
+          (keyword)
+          (identifier))))))
 
 ================================================================================
 Multiple Keyword Messages with literal array
@@ -147,18 +154,19 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (keyword_message
-        (identifier)
-        (keyword)
-        (literal_array
-          (number)
-          (number)
-          (number)
-          (number)
-          (number))
-        (keyword)
-        (identifier)))))
+    (method_body
+      (statement
+        (keyword_message
+          (identifier)
+          (keyword)
+          (literal_array
+            (number)
+            (number)
+            (number)
+            (number)
+            (number))
+          (keyword)
+          (identifier))))))
 
 ================================================================================
 Binary in Keyword Message
@@ -172,14 +180,15 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (keyword_message
-        (identifier)
-        (keyword)
-        (binary_message
+    (method_body
+      (statement
+        (keyword_message
           (identifier)
-          (binary_operator)
-          (identifier))))))
+          (keyword)
+          (binary_message
+            (identifier)
+            (binary_operator)
+            (identifier)))))))
 
 ================================================================================
 Multiple Sends in Keyword Message
@@ -193,16 +202,17 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (keyword_message
-        (identifier)
-        (keyword)
-        (binary_message
+    (method_body
+      (statement
+        (keyword_message
           (identifier)
-          (binary_operator)
-          (identifier))
-        (keyword)
-        (identifier)))))
+          (keyword)
+          (binary_message
+            (identifier)
+            (binary_operator)
+            (identifier))
+          (keyword)
+          (identifier))))))
 
 ================================================================================
 Multiple Binary Sends in Keyword Message
@@ -216,19 +226,20 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (keyword_message
-        (identifier)
-        (keyword)
-        (binary_message
+    (method_body
+      (statement
+        (keyword_message
           (identifier)
-          (binary_operator)
-          (identifier))
-        (keyword)
-        (binary_message
-          (identifier)
-          (binary_operator)
-          (identifier))))))
+          (keyword)
+          (binary_message
+            (identifier)
+            (binary_operator)
+            (identifier))
+          (keyword)
+          (binary_message
+            (identifier)
+            (binary_operator)
+            (identifier)))))))
 
 ================================================================================
 Nested Keyword Message with Parenthesis
@@ -242,15 +253,16 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (keyword_message
-        (identifier)
-        (keyword)
-        (parenthesized_expression
-          (keyword_message
-            (identifier)
-            (keyword)
-            (identifier)))))))
+    (method_body
+      (statement
+        (keyword_message
+          (identifier)
+          (keyword)
+          (parenthesized_expression
+            (keyword_message
+              (identifier)
+              (keyword)
+              (identifier))))))))
 
 ================================================================================
 Binary Message Send Backslash
@@ -264,9 +276,10 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (binary_message
-        (identifier)
-        (binary_operator)
-        (identifier)))))
+    (method_body
+      (statement
+        (binary_message
+          (identifier)
+          (binary_operator)
+          (identifier))))))
 

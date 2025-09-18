@@ -10,8 +10,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (identifier))))
+    (method_body
+      (statement
+        (identifier)))))
 
 ================================================================================
 Identifier
@@ -25,8 +26,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (identifier))))
+    (method_body
+      (statement
+        (identifier)))))
 
 ================================================================================
 String
@@ -40,8 +42,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (string))))
+    (method_body
+      (statement
+        (string)))))
 
 ================================================================================
 Multiline String
@@ -56,8 +59,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (string))))
+    (method_body
+      (statement
+        (string)))))
 
 ================================================================================
 Quotes in String
@@ -72,12 +76,13 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (binary_message
-        (string)
-        (comment)
-        (binary_operator)
-        (string)))))
+    (method_body
+      (statement
+        (binary_message
+          (string)
+          (comment)
+          (binary_operator)
+          (string))))))
 
 ================================================================================
 Escaped String
@@ -91,8 +96,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (string))))
+    (method_body
+      (statement
+        (string)))))
 
 ================================================================================
 Empty String
@@ -106,8 +112,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (string))))
+    (method_body
+      (statement
+        (string)))))
 
 ================================================================================
 Number
@@ -121,8 +128,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (number))))
+    (method_body
+      (statement
+        (number)))))
 
 ================================================================================
 Number with Base
@@ -136,8 +144,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (number))))
+    (method_body
+      (statement
+        (number)))))
 
 ================================================================================
 Hexadecimal number
@@ -151,8 +160,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (number))))
+    (method_body
+      (statement
+        (number)))))
 
 ================================================================================
 Negative Number
@@ -166,8 +176,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (number))))
+    (method_body
+      (statement
+        (number)))))
 
 ================================================================================
 Negative Integer
@@ -181,8 +192,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (number))))
+    (method_body
+      (statement
+        (number)))))
 
 ================================================================================
 Number with Decimal
@@ -197,10 +209,11 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (number))
-    (statement
-      (number))))
+    (method_body
+      (statement
+        (number))
+      (statement
+        (number)))))
 
 ================================================================================
 Number in scientific notation
@@ -215,10 +228,11 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (number))
-    (statement
-      (number))))
+    (method_body
+      (statement
+        (number))
+      (statement
+        (number)))))
 
 ================================================================================
 Symbol
@@ -232,8 +246,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (symbol))))
+    (method_body
+      (statement
+        (symbol)))))
 
 ================================================================================
 Binary Symbol
@@ -247,8 +262,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (symbol))))
+    (method_body
+      (statement
+        (symbol)))))
 
 ================================================================================
 Quoted Symbol
@@ -262,9 +278,10 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (symbol
-        (string)))))
+    (method_body
+      (statement
+        (symbol
+          (string))))))
 
 ================================================================================
 Multiple quoted Symbol
@@ -278,9 +295,10 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (symbol
-        (string)))))
+    (method_body
+      (statement
+        (symbol
+          (string))))))
 
 ================================================================================
 Empty Symbol
@@ -294,9 +312,10 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (symbol
-        (string)))))
+    (method_body
+      (statement
+        (symbol
+          (string))))))
 
 ================================================================================
 Character
@@ -310,8 +329,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (character))))
+    (method_body
+      (statement
+        (character)))))
 
 ================================================================================
 Space Character
@@ -325,8 +345,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (character))))
+    (method_body
+      (statement
+        (character)))))
 
 ================================================================================
 Dollar Character
@@ -340,8 +361,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (character))))
+    (method_body
+      (statement
+        (character)))))
 
 ================================================================================
 Return Character
@@ -356,5 +378,6 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (character))))
+    (method_body
+      (statement
+        (character)))))

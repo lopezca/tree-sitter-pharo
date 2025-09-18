@@ -10,10 +10,11 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (block
-        (statement
-          (identifier))))))
+    (method_body
+      (statement
+        (block
+          (statement
+            (identifier)))))))
 
 ================================================================================
 Block with arguments
@@ -27,12 +28,13 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (block
-        (block_argument)
-        (block_argument)
-        (statement
-          (identifier))))))
+    (method_body
+      (statement
+        (block
+          (block_argument)
+          (block_argument)
+          (statement
+            (identifier)))))))
 
 ================================================================================
 Block with arguments and temporaries
@@ -46,15 +48,16 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (block
-        (block_argument)
-        (block_argument)
-        (temporaries
-          (identifier)
-          (identifier))
-        (statement
-          (identifier))))))
+    (method_body
+      (statement
+        (block
+          (block_argument)
+          (block_argument)
+          (temporaries
+            (identifier)
+            (identifier))
+          (statement
+            (identifier)))))))
 
 ================================================================================
 Block with temporaries
@@ -68,13 +71,14 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (block
-        (temporaries
-          (identifier)
-          (identifier))
-        (statement
-          (identifier))))))
+    (method_body
+      (statement
+        (block
+          (temporaries
+            (identifier)
+            (identifier))
+          (statement
+            (identifier)))))))
 
 ================================================================================
 Block with temporaries and pipe operator
@@ -88,16 +92,17 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (block
-        (temporaries
-          (identifier)
-          (identifier))
-        (statement
-          (binary_message
+    (method_body
+      (statement
+        (block
+          (temporaries
             (identifier)
-            (binary_operator)
-            (identifier)))))))
+            (identifier))
+          (statement
+            (binary_message
+              (identifier)
+              (binary_operator)
+              (identifier))))))))
 
 ================================================================================
 Block with multiple statements
@@ -111,14 +116,15 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (block
-        (statement
-          (identifier))
-        (statement
-          (identifier))
-        (statement
-          (identifier))))))
+    (method_body
+      (statement
+        (block
+          (statement
+            (identifier))
+          (statement
+            (identifier))
+          (statement
+            (identifier)))))))
 
 ================================================================================
 Block argument with number
@@ -132,12 +138,13 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (block
-        (block_argument)
-        (block_argument)
-        (statement
-          (identifier))))))
+    (method_body
+      (statement
+        (block
+          (block_argument)
+          (block_argument)
+          (statement
+            (identifier)))))))
 
 ================================================================================
 Block argument with space
@@ -151,10 +158,11 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (block
-        (block_argument)
-        (block_argument)
-        (statement
-          (identifier))))))
+    (method_body
+      (statement
+        (block
+          (block_argument)
+          (block_argument)
+          (statement
+            (identifier)))))))
 

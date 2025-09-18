@@ -12,8 +12,9 @@ highlightQuery
     (unary_selector
       (unary_identifier))
     (comment)
-    (statement
-      (number))))
+    (method_body
+      (statement
+        (number)))))
 
 ================================================================================
 Multi-line Comment
@@ -28,8 +29,9 @@ c" 234
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (number))
-    (comment)
-    (statement
-      (number))))
+    (method_body
+      (statement
+        (number))
+      (comment)
+      (statement
+        (number)))))

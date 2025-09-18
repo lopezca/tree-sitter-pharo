@@ -103,7 +103,7 @@ module.exports = grammar({
         )
       ),
 
-    method: ($) => prec.right(seq($.selector, repeat(choice($.pragma, $.temporaries)), sep(optional($.statement), "."))),
+    method: ($) => prec.right(seq($.selector, optional($.method_body))),
 
     package_file: ($) => seq($.package_definition),
 

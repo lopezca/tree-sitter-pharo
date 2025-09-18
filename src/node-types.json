@@ -670,19 +670,11 @@
       "required": true,
       "types": [
         {
-          "type": "pragma",
+          "type": "method_body",
           "named": true
         },
         {
           "type": "selector",
-          "named": true
-        },
-        {
-          "type": "statement",
-          "named": true
-        },
-        {
-          "type": "temporaries",
           "named": true
         }
       ]

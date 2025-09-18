@@ -10,8 +10,9 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (dynamic_array))))
+    (method_body
+      (statement
+        (dynamic_array)))))
 
 ================================================================================
 Single Element in Dynamic
@@ -25,9 +26,10 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (dynamic_array
-        (identifier)))))
+    (method_body
+      (statement
+        (dynamic_array
+          (identifier))))))
 
 ================================================================================
 Multiple Elements in Dynamic
@@ -41,11 +43,12 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (dynamic_array
-        (identifier)
-        (identifier)
-        (identifier)))))
+    (method_body
+      (statement
+        (dynamic_array
+          (identifier)
+          (identifier)
+          (identifier))))))
 
 ================================================================================
 Multiple Elements in Dynamic with trailing dot
@@ -59,11 +62,12 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (dynamic_array
-        (identifier)
-        (identifier)
-        (identifier)))))
+    (method_body
+      (statement
+        (dynamic_array
+          (identifier)
+          (identifier)
+          (identifier))))))
 
 ================================================================================
 Multiple Elements in Byte Array
@@ -77,11 +81,12 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (byte_array
-        (number)
-        (number)
-        (number)))))
+    (method_body
+      (statement
+        (byte_array
+          (number)
+          (number)
+          (number))))))
 
 ================================================================================
 Hex numbers in Byte Array
@@ -95,11 +100,12 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (byte_array
-        (number)
-        (number)
-        (number)))))
+    (method_body
+      (statement
+        (byte_array
+          (number)
+          (number)
+          (number))))))
 
 ================================================================================
 Multiple Elements in Literal Array
@@ -113,12 +119,13 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (literal_array
-        (number)
-        (symbol)
-        (symbol)
-        (string)))))
+    (method_body
+      (statement
+        (literal_array
+          (number)
+          (symbol)
+          (symbol)
+          (string))))))
 
 ================================================================================
 Nested Elements in Literal Array
@@ -132,14 +139,15 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (literal_array
-        (number)
+    (method_body
+      (statement
         (literal_array
-          (symbol)
-          (symbol))
-        (literal_array
-          (string))))))
+          (number)
+          (literal_array
+            (symbol)
+            (symbol))
+          (literal_array
+            (string)))))))
 
 ================================================================================
 Nested Byte Array in Literal Array
@@ -153,16 +161,17 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (literal_array
-        (byte_array
+    (method_body
+      (statement
+        (literal_array
+          (byte_array
+            (number)
+            (number))
           (number)
-          (number))
-        (number)
-        (byte_array
-          (number)
-          (number)
-          (number))))))
+          (byte_array
+            (number)
+            (number)
+            (number)))))))
 
 ================================================================================
 Dot in Literal Array
@@ -176,12 +185,13 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (literal_array
-        (symbol)
-        (symbol)
-        (symbol)
-        (symbol)))))
+    (method_body
+      (statement
+        (literal_array
+          (symbol)
+          (symbol)
+          (symbol)
+          (symbol))))))
 
 ================================================================================
 Keyword Symbol in Literal Array
@@ -195,9 +205,10 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (literal_array
-        (symbol)))))
+    (method_body
+      (statement
+        (literal_array
+          (symbol))))))
 
 ================================================================================
 Explicit Symbol in Literal Array
@@ -211,7 +222,8 @@ test
   (method
     (unary_selector
       (unary_identifier))
-    (statement
-      (literal_array
-        (symbol)
-        (symbol)))))
+    (method_body
+      (statement
+        (literal_array
+          (symbol)
+          (symbol))))))

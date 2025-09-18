@@ -9,7 +9,8 @@ test
 (source
   (method
     (unary_selector (unary_identifier))
-    (pragma (pragma_unary_selector (unary_identifier)))))
+    (method_body
+      (pragma (pragma_unary_selector (unary_identifier))))))
 
 =================
 Keyword pragma
@@ -22,10 +23,11 @@ test
 (source
   (method
     (unary_selector (unary_identifier))
-    (pragma (pragma_keyword_selector
-        (keyword) (number)
-        (keyword) (literal_array (symbol) (symbol))
-        (keyword) (string)))))
+    (method_body
+      (pragma (pragma_keyword_selector
+          (keyword) (number)
+          (keyword) (literal_array (symbol) (symbol))
+          (keyword) (string))))))
 
 =================
 Multiple pragmas
@@ -38,8 +40,9 @@ openExplorer
 (source
   (method
     (unary_selector (unary_identifier))
-    (pragma (pragma_unary_selector (unary_identifier)))
-    (pragma (pragma_keyword_selector (keyword) (number)))))
+    (method_body
+      (pragma (pragma_unary_selector (unary_identifier)))
+      (pragma (pragma_keyword_selector (keyword) (number))))))
 
 =================
 Temporaries after pragmas
@@ -52,6 +55,7 @@ openExplorer
 (source
   (method
     (unary_selector (unary_identifier))
-    (pragma (pragma_unary_selector (unary_identifier)))
-    (temporaries (identifier))))
+    (method_body
+      (pragma (pragma_unary_selector (unary_identifier)))
+      (temporaries (identifier)))))
 
