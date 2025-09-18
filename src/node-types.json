@@ -788,6 +788,10 @@
         "required": false,
         "types": [
           {
+            "type": "dashed_symbol",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },

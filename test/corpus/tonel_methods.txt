@@ -3148,3 +3148,38 @@ handDownVectors: aPolygon
                 (keyword)
                 (identifier)))))))))
 
+================================================================================
+Real example #12 - PSQLGrammarTest - testAggregateExpression
+================================================================================
+testAggregateExpression
+
+    self
+    	parse: 'array_agg(a ORDER BY b DESC)' rule: #expression;
+    	parse: 'string_agg(a, '','' ORDER BY a)' rule: #expression;
+    	parse: 'string_agg(a ORDER BY a, '','')' rule: #expression
+--------------------------------------------------------------------------------
+
+(source
+  (method
+    (unary_selector
+      (unary_identifier))
+    (method_body
+      (statement
+        (cascade
+          (keyword_message
+            (self)
+            (keyword)
+            (string)
+            (keyword)
+            (symbol))
+          (cascaded_keyword_message
+            (keyword)
+            (string)
+            (keyword)
+            (symbol))
+          (cascaded_keyword_message
+            (keyword)
+            (string)
+            (keyword)
+            (symbol)))))))
+

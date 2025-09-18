@@ -80,7 +80,7 @@ module.exports = grammar({
 
     method_metadata_pair: ($) =>
       choice(
-        prec(1, seq(field("key", alias("#category", $.ston_key)), ":", field("category", choice($.string, $.symbol)))),
+        prec(1, seq(field("key", alias("#category", $.ston_key)), ":", field("category", choice($.string, $.symbol, $.dashed_symbol)))),
         prec(0, $.ston_pair)
       ),
     

@@ -3902,3 +3902,64 @@ VMBSPLeaf >> handDownVectors: aPolygon. [
                   (self)
                   (keyword)
                   (identifier))))))))))
+
+================================================================================
+Real example #12 - PSQLGrammarTest
+================================================================================
+Class {
+	#name : #PSQLGrammarTest,
+	#superclass : #PPCompositeParserTest,
+	#category : 'PostgreSQL-Experiments'
+}
+
+{ #category : #tests-accessing }
+PSQLGrammarTest >> testAggregateExpression [
+	self
+		parse: 'array_agg(a ORDER BY b DESC)' rule: #expression;
+		parse: 'string_agg(a, '','' ORDER BY a)' rule: #expression;
+		parse: 'string_agg(a ORDER BY a, '','')' rule: #expression
+]
+--------------------------------------------------------------------------------
+(source
+      (source_file
+        (class_definition
+          (type)
+          (class_header
+            (class_header_pair
+              (ston_key)
+              (symbol))
+            (class_header_pair
+              (ston_key)
+              (symbol))
+            (class_header_pair
+              (ston_key)
+              (string))))
+        (method_definition
+          (method_metadata
+            (method_metadata_object
+              (method_metadata_pair
+                (ston_key)
+                (dashed_symbol))))
+          (method_header
+            (identifier)
+            (unary_selector
+              (unary_identifier)))
+          (method_body
+            (statement
+              (cascade
+                (keyword_message
+                  (self)
+                  (keyword)
+                  (string)
+                  (keyword)
+                  (symbol))
+                (cascaded_keyword_message
+                  (keyword)
+                  (string)
+                  (keyword)
+                  (symbol))
+                (cascaded_keyword_message
+                  (keyword)
+                  (string)
+                  (keyword)
+                  (symbol))))))))

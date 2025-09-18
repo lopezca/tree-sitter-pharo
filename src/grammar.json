@@ -961,6 +961,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "symbol"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dashed_symbol"
                     }
                   ]
                 }
