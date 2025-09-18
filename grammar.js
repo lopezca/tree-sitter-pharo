@@ -9,6 +9,7 @@ module.exports = grammar({
   supertypes: ($) => [$.selector, $.expression, $.primary],
   conflicts: ($) => [
     [$.block],
+    [$.dynamic_array],
   ],
   inline: ($) => [$.keyword_part],
   externals: ($) => [$.keyword, $._number_literal],
@@ -157,7 +158,7 @@ module.exports = grammar({
     statement: ($) => choice($.expression, $.return),
     return: ($) => seq("^", $.expression),
 
-    dynamic_array: ($) => seq("{", sep($.expression, "."), optional("."), "}"),
+    dynamic_array: ($) => seq("{", repeat("."), sep($.expression, repeat(".")), repeat("."), "}"),
     byte_array: ($) => seq("#", repeat("#"), "[", repeat($.number), "]"),
     literal_array: ($) => seq("#", repeat("#"), "(", repeat($._literal_array_element), ")"),
     _literal_array_element: ($) => choice(
