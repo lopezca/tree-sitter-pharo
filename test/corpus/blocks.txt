@@ -166,3 +166,66 @@ test
           (statement
             (identifier)))))))
 
+================================================================================
+Multiple dots between statements
+================================================================================
+testFor: aCollection
+    aCollection do: [ :lineSeg |
+        | rObj |
+        
+        rObj := lineSeg asRenderableElement color: Color blue...
+        
+        lineSeg isFrontier ifTrue: [
+          rObj dashStyle: #( "fill" 0.05 "gap" 0.05)....
+        ]...
+        
+        renderCollection add: (rObj).
+    ].
+--------------------------------------------------------------------------------
+(source
+  (method
+    (keyword_selector
+      (keyword)
+      (identifier))
+    (method_body
+      (statement
+        (keyword_message
+          (identifier)
+          (keyword)
+          (block
+            (block_argument)
+            (temporaries
+              (identifier))
+            (statement
+              (assignment
+                (identifier)
+                (keyword_message
+                  (unary_message
+                    (identifier)
+                    (unary_identifier))
+                  (keyword)
+                  (unary_message
+                    (identifier)
+                    (unary_identifier)))))
+            (statement
+              (keyword_message
+                (unary_message
+                  (identifier)
+                  (unary_identifier))
+                (keyword)
+                (block
+                  (statement
+                    (keyword_message
+                      (identifier)
+                      (keyword)
+                      (literal_array
+                        (comment)
+                        (number)
+                        (comment)
+                        (number)))))))
+            (statement
+              (keyword_message
+                (identifier)
+                (keyword)
+                (parenthesized_expression
+                  (identifier))))))))))

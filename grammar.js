@@ -10,6 +10,7 @@ module.exports = grammar({
   conflicts: ($) => [
     [$.temporaries, $.primary],
     [$.temporaries, $.temporaries],
+    [$.block],
   ],
   inline: ($) => [$.keyword_part],
   externals: ($) => [$.keyword, $._number_literal],
@@ -92,12 +93,12 @@ module.exports = grammar({
           seq(
             repeat1(choice($.pragma, $.temporaries)),
             repeat("."),
-            optional(seq(sep1($.statement, repeat(".")), repeat(".")))
+            optional(seq(sep1($.statement, repeat1(".")), repeat(".")))
           ),
           seq(
             repeat(choice($.pragma, $.temporaries)),
             repeat("."),
-            sep1($.statement, repeat(".")),
+            sep1($.statement, repeat1(".")),
             repeat(".")
           )
         )
@@ -192,9 +193,9 @@ module.exports = grammar({
         "[",
         optional(seq(repeat($.block_argument), "|")),
         optional($.temporaries),
-        optional("."),
-        sep($.statement, "."),
-        optional("."),
+        repeat("."),
+        sep($.statement, repeat1(".")),
+        repeat("."),
         "]"
       ),
 
