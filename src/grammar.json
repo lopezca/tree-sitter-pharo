@@ -1004,6 +1004,13 @@
         {
           "type": "SYMBOL",
           "name": "selector"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "STRING",
+            "value": "."
+          }
         }
       ]
     },

@@ -83,7 +83,7 @@ module.exports = grammar({
         prec(0, $.ston_pair)
       ),
     
-    method_header: ($) => seq($.identifier, optional($.class_keyword), '>>', $.selector),
+    method_header: ($) => seq($.identifier, optional($.class_keyword), '>>', $.selector, repeat(".")),
     class_keyword: ($) => choice('class', 'classSide'),
     
     method_body: ($) =>

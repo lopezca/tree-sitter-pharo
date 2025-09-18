@@ -3072,3 +3072,47 @@ testTopologicalSort
             (keyword)
             (identifier)))))))
 
+================================================================================
+Real example #11 - ProtoObject - handDownVectors: aPolygon
+================================================================================
+handDownVectors: aPolygon
+
+    "all obstacles and sectors are 'inserted' into the sector, so that dominant vector types can
+    merge into the sector. for example, a frontier in the sector polygon can overlap with an obstacle
+    from 'aPolygon', causing the frontier to turn into an obstacle. partial overlaps result into
+    vectors being split into smaller vectors before type merging."
+    aPolygon select: [ :v | v isObstacle or: [v isSector]] thenDo: [ :v | self insertVector: v ].
+--------------------------------------------------------------------------------
+
+(source
+  (method
+    (keyword_selector
+      (keyword)
+      (identifier))
+    (comment)
+    (statement
+      (keyword_message
+        (identifier)
+        (keyword)
+        (block
+          (block_argument)
+          (statement
+            (keyword_message
+              (unary_message
+                (identifier)
+                (unary_identifier))
+              (keyword)
+              (block
+                (statement
+                  (unary_message
+                    (identifier)
+                    (unary_identifier)))))))
+        (keyword)
+        (block
+          (block_argument)
+          (statement
+            (keyword_message
+              (self)
+              (keyword)
+              (identifier))))))))
+

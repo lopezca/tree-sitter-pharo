@@ -118,3 +118,17 @@ test: abc
     (statement (identifier))
     (statement (identifier))
     (statement (return (identifier)))))
+
+=================
+Dots after selector
+=================
+test: abc ...
+    ^1
+---
+
+(source
+  (method
+    (keyword_selector (keyword) (identifier))
+    (statement
+      (return
+        (number)))))

@@ -3819,3 +3819,86 @@ Class {
           (ston_key)
           (symbol
             (string)))))))
+
+================================================================================
+Real example #11 - ProtoObject
+================================================================================
+Class {
+	#name : #VMBSPLeaf,
+	#superclass : #VMBSPBase,
+	#instVars : [
+		'sector'
+	],
+	#category : #'PolySLAM-Core-Nearest Neighbor Search'
+}
+
+{ #category : #'as yet unclassified' }
+VMBSPLeaf >> handDownVectors: aPolygon. [
+	"all obstacles and sectors are 'inserted' into the sector, so that dominant vector types can
+	merge into the sector. for example, a frontier in the sector polygon can overlap with an obstacle
+	from 'aPolygon', causing the frontier to turn into an obstacle. partial overlaps result into
+	vectors being split into smaller vectors before type merging."
+	aPolygon select: [ :v | v isObstacle or: [v isSector]] thenDo: [ :v | self insertVector: v ].
+
+]
+
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (ston_array
+            (ston_value
+              (string))))
+        (class_header_pair
+          (ston_key)
+          (symbol
+            (string)))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair
+            (ston_key)
+            (symbol
+              (string)))))
+      (method_header
+        (identifier)
+        (keyword_selector
+          (keyword)
+          (identifier)))
+      (comment)
+      (method_body
+        (statement
+          (keyword_message
+            (identifier)
+            (keyword)
+            (block
+              (block_argument)
+              (statement
+                (keyword_message
+                  (unary_message
+                    (identifier)
+                    (unary_identifier))
+                  (keyword)
+                  (block
+                    (statement
+                      (unary_message
+                        (identifier)
+                        (unary_identifier)))))))
+            (keyword)
+            (block
+              (block_argument)
+              (statement
+                (keyword_message
+                  (self)
+                  (keyword)
+                  (identifier))))))))))
