@@ -110,7 +110,7 @@ module.exports = grammar({
     package_definition: ($) => seq(token('Package'), $.package_data),
     package_data: ($) => prec.right(seq(
         "{",
-        seq(field("key", alias("#name", $.ston_key)), ":", field("name", choice($.string, $.symbol))),
+        seq(field("key", alias("#name", $.ston_key)), ":", field("name", choice($.string, $.symbol, $.dashed_symbol))),
         "}"
       )),
 
