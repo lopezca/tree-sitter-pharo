@@ -824,6 +824,11 @@
     }
   },
   {
+    "type": "number",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "package_data",
     "named": true,
     "fields": {
@@ -1313,10 +1318,6 @@
   },
   {
     "type": "nil",
-    "named": true
-  },
-  {
-    "type": "number",
     "named": true
   },
   {

@@ -1603,8 +1603,8 @@
       }
     },
     "number": {
-      "type": "PATTERN",
-      "value": "(?:[-+]?[0-9]+\\.[0-9]+|[-+]?(?:[0-9]+r)?[0-9]+)(?:[eE][-+]?[0-9]+)?"
+      "type": "SYMBOL",
+      "name": "_number_literal"
     },
     "string": {
       "type": "TOKEN",
@@ -2329,6 +2329,10 @@
     {
       "type": "SYMBOL",
       "name": "keyword"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_number_literal"
     }
   ],
   "inline": [
