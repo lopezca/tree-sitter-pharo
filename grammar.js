@@ -8,8 +8,6 @@ module.exports = grammar({
 
   supertypes: ($) => [$.selector, $.expression, $.primary],
   conflicts: ($) => [
-    [$.temporaries, $.primary],
-    [$.temporaries, $.temporaries],
     [$.block],
   ],
   inline: ($) => [$.keyword_part],
@@ -189,14 +187,21 @@ module.exports = grammar({
 
     block_argument: ($) => /: *[A-Za-z_][A-Za-z0-9_]*/,
     block: ($) =>
-      seq(
-        "[",
-        optional(seq(repeat($.block_argument), "|")),
-        optional($.temporaries),
-        repeat("."),
-        sep($.statement, repeat1(".")),
-        repeat("."),
-        "]"
+      choice(
+        seq(
+          "[",
+          repeat1($.block_argument),
+          "]"
+        ),
+        seq(
+          "[",
+          optional(seq(repeat1($.block_argument), "|")),
+          optional($.temporaries),
+          repeat("."),
+          optional(sep($.statement, repeat1("."))),
+          repeat("."),
+          "]"
+        )
       ),
 
     true: ($) => "true",

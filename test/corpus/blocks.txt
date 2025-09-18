@@ -229,3 +229,20 @@ testFor: aCollection
                 (keyword)
                 (parenthesized_expression
                   (identifier))))))))))
+
+================================================================================
+Block without statements
+================================================================================
+test
+
+    [ :e ]
+--------------------------------------------------------------------------------
+
+(source
+  (method
+    (unary_selector
+      (unary_identifier))
+    (method_body
+      (statement
+        (block
+          (block_argument))))))
