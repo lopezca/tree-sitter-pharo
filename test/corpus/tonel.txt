@@ -3793,3 +3793,29 @@ DirectedGraphTest >> testTopologicalSort [
                 (identifier)
                 (keyword)
                 (identifier)))))))))
+
+================================================================================
+Real example #10 - ProtoObject
+================================================================================
+Class {
+	#name : #ProtoObject,
+	#superclass : nil,
+	#category : #'Kernel-Objects'
+}
+
+--------------------------------------------------------------------------------
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair
+          (ston_key)
+          (symbol))
+        (class_header_pair
+          (ston_key)
+          (nil))
+        (class_header_pair
+          (ston_key)
+          (symbol
+            (string)))))))

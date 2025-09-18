@@ -58,7 +58,7 @@ module.exports = grammar({
     class_header_pair: ($) =>
       choice(
         prec(1, seq(field("key", alias("#name", $.ston_key)),          ":", field("name", choice($.string, $.symbol, $.dashed_symbol)))),
-        prec(1, seq(field("key", alias("#superclass", $.ston_key)),    ":", field("superclass", choice($.string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#superclass", $.ston_key)),    ":", field("superclass", choice($.nil, $.string, $.symbol, $.dashed_symbol)))),
         prec(1, seq(field("key", alias("#traits", $.ston_key)),        ":", field("traits", choice($.string, $.symbol, $.dashed_symbol)))),
         prec(1, seq(field("key", alias("#classTraits", $.ston_key)),   ":", field("classTraits", choice($.string, $.symbol, $.dashed_symbol)))),
         prec(1, seq(field("key", alias("#category", $.ston_key)),      ":", field("category", choice($.string, $.symbol, $.dashed_symbol)))),

@@ -479,6 +479,10 @@
             "named": true
           },
           {
+            "type": "nil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },

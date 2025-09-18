@@ -418,6 +418,10 @@
                   "members": [
                     {
                       "type": "SYMBOL",
+                      "name": "nil"
+                    },
+                    {
+                      "type": "SYMBOL",
                       "name": "string"
                     },
                     {
