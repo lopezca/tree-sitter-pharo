@@ -197,7 +197,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string"
+          "name": "_ston_string"
         },
         {
           "type": "SYMBOL",
@@ -371,7 +371,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "string"
+                      "name": "_ston_string"
                     },
                     {
                       "type": "SYMBOL",
@@ -422,7 +422,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "string"
+                      "name": "_ston_string"
                     },
                     {
                       "type": "SYMBOL",
@@ -469,7 +469,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "string"
+                      "name": "_ston_string"
                     },
                     {
                       "type": "SYMBOL",
@@ -516,7 +516,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "string"
+                      "name": "_ston_string"
                     },
                     {
                       "type": "SYMBOL",
@@ -563,7 +563,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "string"
+                      "name": "_ston_string"
                     },
                     {
                       "type": "SYMBOL",
@@ -610,7 +610,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "string"
+                      "name": "_ston_string"
                     },
                     {
                       "type": "SYMBOL",
@@ -793,7 +793,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "string"
+                      "name": "_ston_string"
                     },
                     {
                       "type": "SYMBOL",
@@ -956,7 +956,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "string"
+                      "name": "_ston_string"
                     },
                     {
                       "type": "SYMBOL",
@@ -1267,7 +1267,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "string"
+                      "name": "_ston_string"
                     },
                     {
                       "type": "SYMBOL",
@@ -1591,6 +1591,31 @@
           }
         ]
       }
+    },
+    "_ston_string": {
+      "type": "ALIAS",
+      "content": {
+        "type": "TOKEN",
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "'"
+            },
+            {
+              "type": "PATTERN",
+              "value": "([^'\\\\]|\\\\.)*"
+            },
+            {
+              "type": "STRING",
+              "value": "'"
+            }
+          ]
+        }
+      },
+      "named": true,
+      "value": "string"
     },
     "symbol": {
       "type": "SEQ",

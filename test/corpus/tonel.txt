@@ -3963,3 +3963,108 @@ PSQLGrammarTest >> testAggregateExpression [
                   (string)
                   (keyword)
                   (symbol))))))))
+
+================================================================================
+Class header with a STON escaped quote
+================================================================================
+Class {
+	#name : 'Foo',
+	#superclass : 'Object',
+	#category : 'the handler\'s problem'
+}
+--------------------------------------------------------------------------------
+
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair key:
+          (ston_key) name:
+          (string))
+        (class_header_pair key:
+          (ston_key) superclass:
+          (string))
+        (class_header_pair key:
+          (ston_key) category:
+          (string))))))
+
+================================================================================
+Method category with a STON escaped quote
+================================================================================
+Class {
+	#name : 'Foo',
+	#superclass : 'Object'
+}
+
+{ #category : 'tests - the handler\'s problem' }
+Foo >> bar [
+	^ 1
+]
+--------------------------------------------------------------------------------
+
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair key:
+          (ston_key) name:
+          (string))
+        (class_header_pair key:
+          (ston_key) superclass:
+          (string))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair key:
+            (ston_key) category:
+            (string))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (statement
+          (return
+            (number)))))))
+
+================================================================================
+Backslash in a code string is not an escape
+================================================================================
+Class {
+	#name : 'Foo',
+	#superclass : 'Object'
+}
+
+{ #category : 'accessing' }
+Foo >> separator [
+	^ '\'
+]
+--------------------------------------------------------------------------------
+
+(source
+  (source_file
+    (class_definition
+      (type)
+      (class_header
+        (class_header_pair key:
+          (ston_key) name:
+          (string))
+        (class_header_pair key:
+          (ston_key) superclass:
+          (string))))
+    (method_definition
+      (method_metadata
+        (method_metadata_object
+          (method_metadata_pair key:
+            (ston_key) category:
+            (string))))
+      (method_header
+        (identifier)
+        (unary_selector
+          (unary_identifier)))
+      (method_body
+        (statement
+          (return
+            (string)))))))

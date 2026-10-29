@@ -39,7 +39,7 @@ module.exports = grammar({
     ston_value: ($) =>
       choice(
         $.symbol,
-        $.string,
+        $._ston_string,
         $.number,
         $.ston_array,
         $.ston_object,
@@ -57,17 +57,17 @@ module.exports = grammar({
 
     class_header_pair: ($) =>
       choice(
-        prec(1, seq(field("key", alias("#name", $.ston_key)),          ":", field("name", choice($.string, $.symbol, $.dashed_symbol)))),
-        prec(1, seq(field("key", alias("#superclass", $.ston_key)),    ":", field("superclass", choice($.nil, $.string, $.symbol, $.dashed_symbol)))),
-        prec(1, seq(field("key", alias("#traits", $.ston_key)),        ":", field("traits", choice($.string, $.symbol, $.dashed_symbol)))),
-        prec(1, seq(field("key", alias("#classTraits", $.ston_key)),   ":", field("classTraits", choice($.string, $.symbol, $.dashed_symbol)))),
-        prec(1, seq(field("key", alias("#category", $.ston_key)),      ":", field("category", choice($.string, $.symbol, $.dashed_symbol)))),
-        prec(1, seq(field("key", alias("#package", $.ston_key)),       ":", field("package", choice($.string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#name", $.ston_key)),          ":", field("name", choice($._ston_string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#superclass", $.ston_key)),    ":", field("superclass", choice($.nil, $._ston_string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#traits", $.ston_key)),        ":", field("traits", choice($._ston_string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#classTraits", $.ston_key)),   ":", field("classTraits", choice($._ston_string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#category", $.ston_key)),      ":", field("category", choice($._ston_string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#package", $.ston_key)),       ":", field("package", choice($._ston_string, $.symbol, $.dashed_symbol)))),
         prec(1, seq(field("key", alias("#instVars", $.ston_key)),      ":", field("instVars", $.ston_array))),
         prec(1, seq(field("key", alias("#classVars", $.ston_key)),     ":", field("classVars", $.ston_array))),
         prec(1, seq(field("key", alias("#pools", $.ston_key)),         ":", field("pools", $.ston_array))),
         prec(1, seq(field("key", alias("#classInstVars", $.ston_key)), ":", field("classInstVars", $.ston_array))),
-        prec(1, seq(field("key", alias("#type", $.ston_key)),          ":", field("type", choice($.string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#type", $.ston_key)),          ":", field("type", choice($._ston_string, $.symbol, $.dashed_symbol)))),
         prec(0, $.ston_pair)
       ),
 
@@ -79,7 +79,7 @@ module.exports = grammar({
 
     method_metadata_pair: ($) =>
       choice(
-        prec(1, seq(field("key", alias("#category", $.ston_key)), ":", field("category", choice($.string, $.symbol, $.dashed_symbol)))),
+        prec(1, seq(field("key", alias("#category", $.ston_key)), ":", field("category", choice($._ston_string, $.symbol, $.dashed_symbol)))),
         prec(0, $.ston_pair)
       ),
     
@@ -110,7 +110,7 @@ module.exports = grammar({
     package_definition: ($) => seq(token('Package'), $.package_data),
     package_data: ($) => prec.right(seq(
         "{",
-        seq(field("key", alias("#name", $.ston_key)), ":", field("name", choice($.string, $.symbol, $.dashed_symbol))),
+        seq(field("key", alias("#name", $.ston_key)), ":", field("name", choice($._ston_string, $.symbol, $.dashed_symbol))),
         "}"
       )),
 
@@ -142,6 +142,11 @@ module.exports = grammar({
 
     number: ($) => $._number_literal,
     string: ($) => token(seq("'", /([^']|'')*/, "'")),
+    // A string in Tonel metadata (STON): a quote is escaped with a backslash, as in
+    // { #category : 'the handler\'s problem' }, where Smalltalk code doubles it.
+    // As in Pharo's TonelParser, a doubled quote is not an escape in metadata.
+    // It is a string node, like the strings in code.
+    _ston_string: ($) => alias(token(seq("'", /([^'\\]|\\.)*/, "'")), $.string),
     symbol: ($) => seq(
       "#",
       repeat("#"),
