@@ -47,3 +47,6 @@ zig-out/
 *.tar.gz
 *.tgz
 *.zip
+
+# Local tooling (scripts/setup-local-tools.sh)
+.tools/

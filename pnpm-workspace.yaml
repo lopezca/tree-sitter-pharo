@@ -1,0 +1,6 @@
+# Dependencies allowed to run install scripts: tree-sitter-cli downloads its binary.
+allowBuilds:
+  tree-sitter-cli: true
+# pnpm run would first run this package's install script (node-gyp-build of the
+# Node.js binding), which generating and testing the grammar do not need.
+verifyDepsBeforeRun: false
