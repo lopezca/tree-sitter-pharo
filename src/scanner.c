@@ -13,6 +13,37 @@ static inline int digit_value(int32_t character) {
   return -1;
 }
 
+// Pharo's ScaledDecimal suffix: 's' and optional scale digits after the mantissa,
+// as in 3s, 3s2, 1.50s or 16r1Fs2. An 's' followed by a letter starts a message
+// instead (3sqrt is 3 sqrt), and a scaled decimal takes no exponent.
+// Answer SCALE_NONE when there is no 's', SCALE_TAKEN when the suffix is part of
+// the number, and SCALE_MESSAGE when the 's' starts a message: the lexer is then
+// past the 's', and the number token ends at the last mark_end.
+enum Scale { SCALE_NONE, SCALE_TAKEN, SCALE_MESSAGE };
+
+static enum Scale scan_scale(TSLexer *lexer) {
+  if (lexer->lookahead != 's') {
+    return SCALE_NONE;
+  }
+
+  lexer->advance(lexer, false);
+
+  if (iswdigit(lexer->lookahead)) {
+    do {
+      lexer->advance(lexer, false);
+    } while (iswdigit(lexer->lookahead));
+    lexer->mark_end(lexer);
+    return SCALE_TAKEN;
+  }
+
+  if (iswalpha(lexer->lookahead) || lexer->lookahead == '_') {
+    return SCALE_MESSAGE;
+  }
+
+  lexer->mark_end(lexer);
+  return SCALE_TAKEN;
+}
+
 static bool scan_number(TSLexer *lexer) {
   if (lexer->lookahead == '+' || lexer->lookahead == '-') {
     lexer->advance(lexer, false);
@@ -58,6 +89,7 @@ static bool scan_number(TSLexer *lexer) {
     }
 
     lexer->mark_end(lexer);
+    scan_scale(lexer);
     lexer->result_symbol = NUMBER;
     return true;
   }
@@ -75,6 +107,11 @@ static bool scan_number(TSLexer *lexer) {
     } while (iswdigit(lexer->lookahead));
 
     lexer->mark_end(lexer);
+  }
+
+  if (scan_scale(lexer) != SCALE_NONE) {
+    lexer->result_symbol = NUMBER;
+    return true;
   }
 
   if (lexer->lookahead == 'e' || lexer->lookahead == 'E') {
